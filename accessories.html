@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Head content -->
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bike Store</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+      /* Custom styles can be added here */
+      .card {
+        transition: transform 0.3s;
+        border: none;
+        background-color: transparent;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .card-img-top {
+        height: 300px;
+        object-fit: cover;
+      }
+
+      .card-title {
+        font-weight: bold;
+        color: #333;
+      }
+
+      .card-text {
+        color: #666;
+      }
+
+      .btn-primary {
+        background-color: #007bff;
+        border: none;
+      }
+
+      .btn-primary:hover {
+        background-color: #0056b3;
+      }
+
+      .btn-primary:focus {
+        box-shadow: none;
+      }
+    </style>
+  </head>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Bike Store</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="bikes.html">Bikes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="accessories.html">Accessories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">About</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" onclick="openCartWindow()">Cart</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login.html">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="signup.html">Sign Up</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <!-- Navigation content -->
+
+  <!-- Main content -->
+  <div class="container mt-4">
+    <h1 class="text-center mb-4">Accessories</h1>
+    <p class="text-center">Enhance your biking experience with our top-notch accessories:</p>
+
+    <div class="row">
+      <div class="col-lg-4 col-md-6">
+        <div class="card text-center">
+          <img src="helmet.jpg" class="card-img-top" alt="Helmet">
+          <div class="card-body">
+            <h5 class="card-title">Helmet</h5>
+            <p class="card-text">Stay safe and protected with our high-quality helmets.</p>
+            <a href="#" class="btn btn-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="card text-center">
+          <img src="lock.jpg" class="card-img-top" alt="Lock">
+          <div class="card-body">
+            <h5 class="card-title">Lock</h5>
+            <p class="card-text">Keep your bike secure with our reliable and sturdy locks.</p>
+            <a href="#" class="btn btn-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="card text-center">
+          <img src="lights.jpg" class="card-img-top" alt="Lights">
+          <div class="card-body">
+            <h5 class="card-title">Lights</h5>
+            <p class="card-text">Stay visible and illuminate your path with our bike lights.</p>
+            <a href="#" class="btn btn-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="card text-center">
+          <img src="basket.jpg" class="card-img-top" alt="Basket">
+          <div class="card-body">
+            <h5 class="card-title">Basket</h5>
+            <p class="card-text">Carry your belongings easily with our convenient bike baskets.</p>
+            <a href="#" class="btn btn-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add more accessory cards here -->
+
+    </div>
+  </div>
+  <!-- Main content -->
+
+  <!-- Footer -->
+<!-- Footer -->
+<footer class="footer">
+    <div class="container text-center">
+      <p>&copy; 2023 Bike Store. All rights reserved.</p>
+      <p>
+        <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a> | <a href="contact.html">Contact Us</a>
+      </p>
+      <div class="social-icons">
+        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-pinterest"></i></a>
+      </div>
+    </div>
+  </footer>
+  <!-- Footer content -->
+  
+  <!-- Footer content -->
+
+  <!-- JavaScript -->
+  <script>
+    // Retrieve stored cart items from local storage, or initialize an empty array
+    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+    // Function to handle adding items to the cart
+    function addToCart(event, productId) {
+      event.preventDefault();
+
+      // Check if the product is already in the cart
+      const existingItem = cartItems.find(item => item.id === productId);
+
+      if (existingItem) {
+        // If the product is already in the cart, increase the quantity
+        existingItem.quantity++;
+      } else {
+        // If the product is not in the cart, add it as a new item
+        const newItem = {
+          id: productId,
+          quantity: 1
+        };
+        cartItems.push(newItem);
+      }
+
+      // Store the updated cart items in local storage
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+      // Optional: Show a success message or perform any other desired actions
+      alert('Item added to cart!');
+      
+      // Update the cart badge
+      updateCartBadge();
+    }
+
+    // Function to display the number of items in the cart
+    function updateCartBadge() {
+      const cartBadge = document.getElementById('cartBadge');
+      cartBadge.textContent = cartItems.length;
+    }
+
+    // Call the function to update the cart badge when the page loads
+    updateCartBadge();
+  </script>
+    <script>
+      function openCartWindow() {
+        window.open('cart.html', 'Cart', 'width=400,height=400');
+      }
+    </script>
+  <!-- JavaScript content -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

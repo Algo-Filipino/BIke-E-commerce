@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bike Store - Cart</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+    /* Custom styles for the cart */
+    .cart-items {
+      margin-bottom: 20px;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .cart-item-image {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      margin-right: 10px;
+    }
+
+    .cart-item-details {
+      flex-grow: 1;
+      margin-right: 10px;
+    }
+
+    .cart-item-title {
+      font-weight: bold;
+    }
+
+    .cart-item-price {
+      color: #dc3545;
+      font-weight: bold;
+    }
+
+    .cart-item-quantity {
+      font-size: 0.8rem;
+    }
+
+    .cart-total {
+      text-align: right;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Cart content -->
+  <div class="container">
+    <h1>Cart</h1>
+    <div class="cart-items">
+      <!-- JavaScript code will dynamically populate the cart items here -->
+    </div>
+    <div class="cart-total">
+      Total: <span id="cartTotal">$0.00</span>
+    </div>
+    <div>
+      <button class="btn btn-primary" onclick="checkout()">Checkout</button>
+    </div>
+  </div>
+
+  <script>
+    // Retrieve stored cart items from local storage, or initialize an empty array
+    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+    // Function to render the cart items
+    function renderCartItems() {
+      const cartItemsContainer = document.querySelector('.cart-items');
+
+      // Clear the existing cart items
+      cartItemsContainer.innerHTML = '';
+
+      // Render each cart item
+      cartItems.forEach(item => {
+        const cartItem = document.createElement('div');
+        cartItem.classList.add('cart-item');
+        cartItem.innerHTML = `
+          <img src="${getImageUrl(item.id)}" alt="Product Image" class="cart-item-image">
+          <div class="cart-item-details">
+            <h5 class="cart-item-title">${getItemTitle(item.id)}</h5>
+            <p class="cart-item-price">$${getItemPrice(item.id)}</p>
+            <p class="cart-item-quantity">Quantity: ${item.quantity}</p>
+          </div>
+          <button class="btn btn-danger" onclick="removeFromCart('${item.id}')">Remove</button>
+        `;
+        cartItemsContainer.appendChild(cartItem);
+      });
+
+      // Update the cart total
+      updateCartTotal();
+    }
+
+    // Function to update the cart total
+    function updateCartTotal() {
+      const cartTotal = document.getElementById('cartTotal');
+      const total = calculateCartTotal();
+      cartTotal.textContent = '$' + total.toFixed(2);
+    }
+
+    // Function to calculate the cart total
+    function calculateCartTotal() {
+      let total = 0;
+
+      cartItems.forEach(item => {
+        const price = getItemPrice(item.id);
+        total += price * item.quantity;
+      });
+
+      return total;
+    }
+
+    // Function to remove an item from the cart
+    function removeFromCart(productId) {
+      // Find the index of the item to remove
+      const itemIndex = cartItems.findIndex(item => item.id === productId);
+
+      if (itemIndex !== -1) {
+        // Remove the item from the cartItems array
+        cartItems.splice(itemIndex, 1);
+
+        // Store the updated cart items in local storage
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+        // Render the updated cart items
+        renderCartItems();
+
+        // Update the cart badge
+        updateCartBadge();
+      }
+    }
+
+    // Function to get the image URL for a product
+    function getImageUrl(productId) {
+      // Replace this with your own logic to retrieve the image URL for a product based on its ID
+      // For example, you can use an object or database to map product IDs to image URLs
+      if (productId === 'product1') {
+        return 'bike1.jpg';
+      } else if (productId === 'product2') {
+        return 'bike2.jpg';
+      }
+      // Add more conditions for other product IDs if needed
+
+      // Return a default image URL if the ID is not found
+      return 'default-image.jpg';
+    }
+
+    // Function to get the title of a product
+    function getItemTitle(productId) {
+      // Replace this with your own logic to retrieve the title of a product based on its ID
+      // For example, you can use an object or database to map product IDs to titles
+      if (productId === 'product1') {
+        return 'Mountain Bike';
+      } else if (productId === 'product2') {
+        return 'Road Bike';
+      }
+      // Add more conditions for other product IDs if needed
+
+      // Return a default title if the ID is not found
+      return 'Unknown Product';
+    }
+
+    // Function to get the price of a product
+    function getItemPrice(productId) {
+      // Replace this with your own logic to retrieve the price of a product based on its ID
+      // For example, you can use an object or database to map product IDs to prices
+      if (productId === 'product1') {
+        return 999.99;
+      } else if (productId === 'product2') {
+        return 1499.99;
+      }
+      // Add more conditions for other product IDs if needed
+
+      // Return a default price if the ID is not found
+      return 0;
+    }
+
+    // Function to handle the checkout process
+    function checkout() {
+      // Replace this with your own logic to handle the checkout process
+      // For example, you can redirect the user to a payment gateway or display a success message
+
+      // Clear the cart items and update the UI
+      cartItems = [];
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+      renderCartItems();
+      updateCartBadge();
+
+      // Show a success message
+      alert('Checkout completed!');
+    }
+
+    // Call the function to render the cart items when the page loads
+    renderCartItems();
+  </script>
+</body>
+
+</html>

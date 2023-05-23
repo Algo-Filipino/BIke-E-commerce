@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bike Store</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+    /* Custom styles */
+    .jumbotron {
+      background-image: url('bike-bg.jpg');
+      background-size: cover;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+      padding: 100px;
+    }
+
+    .jumbotron h1 {
+      font-size: 4rem;
+      font-weight: bold;
+    }
+
+    .jumbotron p {
+      font-size: 1.5rem;
+    }
+
+    .card {
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .product-img {
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .product-title {
+      font-weight: bold;
+    }
+
+    .product-price {
+      color: #dc3545;
+      font-weight: bold;
+    }
+
+    .btn-buy {
+      background-color: #28a745;
+      border-color: #28a745;
+      font-weight: bold;
+    }
+
+    .btn-buy:hover {
+      background-color: #218838;
+      border-color: #218838;
+    }
+
+    .footer {
+      background-color: #f8f9fa;
+      padding: 20px 0;
+    }
+
+    .footer p {
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Bike Store</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="bikes.html">Bikes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="accessories.html">Accessories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">About</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" onclick="openCartWindow()">Cart</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login.html">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="signup.html">Sign Up</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main content -->
+  <div class="container mt-4">
+    <div class="jumbotron">
+      <h1>Welcome to Bike Store</h1>
+      <p>Experience the joy of biking with our high-quality bikes and accessories.</p>
+      <a href="bikes.html" class="btn btn-primary btn-lg">Explore Bikes</a>
+    </div>
+
+    <!-- Additional content for home page -->
+    <div class="row">
+      <div class="col-lg-4 mb-4">
+        <h3>Why Choose Us?</h3>
+        <p>At Bike Store, we are dedicated to providing the best biking experience to our customers. Here are some
+          reasons to choose us:</p>
+        <ul>
+          <li>Wide selection of bikes and accessories</li>
+          <li>High-quality products</li>
+          <li>Competitive prices</li>
+          <li>Fast and reliable shipping</li>
+          <li>Excellent customer service</li>
+        </ul>
+      </div>
+      <div class="col-lg-8">
+        <h3>Featured Products</h3>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card">
+              <img src="bike1.jpg" class="card-img-top product-img" alt="Bike 1">
+              <div class="card-body">
+                <h5 class="card-title product-title">Mountain Bike</h5>
+                <p class="card-text product-price">$999.99</p>
+                <a href="#" onclick="addToCart(event, 'product1')" class="btn btn-primary btn-buy">Buy Now</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card">
+              <img src="bike2.jpg" class="card-img-top product-img" alt="Bike 2">
+              <div class="card-body">
+                <h5 class="card-title product-title">Road Bike</h5>
+                <p class="card-text product-price">$1499.99</p>
+                <a href="#" onclick="addToCart(event, 'product2')" class="btn btn-primary btn-buy">Buy Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Modal -->
+  <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="cartModalLabel">Cart</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- Add your cart content here -->
+          <p>Your cart is empty.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container text-center">
+      <p>&copy; 2023 Bike Store. All rights reserved.</p>
+      <p>
+        <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a> | <a href="contact.html">Contact Us</a>
+      </p>
+      <div class="social-icons">
+        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-pinterest"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Retrieve stored cart items from local storage, or initialize an empty array
+    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+    // Function to handle adding items to the cart
+    function addToCart(event, productId) {
+      event.preventDefault();
+
+      // Check if the product is already in the cart
+      const existingItem = cartItems.find(item => item.id === productId);
+
+      if (existingItem) {
+        // If the product is already in the cart, increase the quantity
+        existingItem.quantity++;
+      } else {
+        // If the product is not in the cart, add it as a new item
+        const newItem = {
+          id: productId,
+          quantity: 1
+        };
+        cartItems.push(newItem);
+      }
+
+      // Store the updated cart items in local storage
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+      // Optional: Show a success message or perform any other desired actions
+      alert('Item added to cart!');
+      
+      // Update the cart badge
+      updateCartBadge();
+    }
+
+    // Function to display the number of items in the cart
+    function updateCartBadge() {
+      const cartBadge = document.getElementById('cartBadge');
+      cartBadge.textContent = cartItems.length;
+    }
+
+    // Call the function to update the cart badge when the page loads
+    updateCartBadge();
+  </script>
+    <script>
+      function openCartWindow() {
+        window.open('cart.html', 'Cart', 'width=400,height=400');
+      }
+    </script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

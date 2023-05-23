@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Head content -->
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bike Store</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+      /* Custom styles can be added here */
+    </style>
+  </head>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Bike Store</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="bikes.html">Bikes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="accessories.html">Accessories</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="openCartWindow()">Cart</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="login.html">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="signup.html">Sign Up</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <!-- Navigation content -->
+
+  <!-- Main content -->
+  <div class="container mt-4">
+    <h1>About</h1>
+    <p>Welcome to Bike Store, your one-stop destination for all your biking needs.</p>
+    <p>At Bike Store, we are passionate about cycling and dedicated to providing top-quality bikes and accessories to our customers. With years of experience in the industry, we strive to offer a wide range of products that cater to the needs of both casual riders and cycling enthusiasts.</p>
+    <p>Our mission is to promote a healthy and sustainable lifestyle through biking. We believe that cycling is not only a great way to stay fit, but also an eco-friendly mode of transportation that helps reduce our carbon footprint.</p>
+    <p>Whether you're a beginner looking for your first bike or a seasoned rider in need of advanced gear, we have got you covered. Our team of experts is always ready to assist you in making the right choice and ensure that you have the best biking experience possible.</p>
+    <p>Thank you for choosing Bike Store. We look forward to serving you and being a part of your biking journey.</p>
+  </div>
+
+  <!-- Footer -->
+<!-- Footer -->
+<footer class="footer">
+    <div class="container text-center">
+      <p>&copy; 2023 Bike Store. All rights reserved.</p>
+      <p>
+        <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a> | <a href="contact.html">Contact Us</a>
+      </p>
+      <div class="social-icons">
+        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-pinterest"></i></a>
+      </div>
+    </div>
+  </footer>
+  <!-- Footer content -->
+  
+  <!-- Footer content -->
+
+  <!-- JavaScript -->
+  <script>
+    // Retrieve stored cart items from local storage, or initialize an empty array
+    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+    // Function to handle adding items to the cart
+    function addToCart(event, productId) {
+      event.preventDefault();
+
+      // Check if the product is already in the cart
+      const existingItem = cartItems.find(item => item.id === productId);
+
+      if (existingItem) {
+        // If the product is already in the cart, increase the quantity
+        existingItem.quantity++;
+      } else {
+        // If the product is not in the cart, add it as a new item
+        const newItem = {
+          id: productId,
+          quantity: 1
+        };
+        cartItems.push(newItem);
+      }
+
+      // Store the updated cart items in local storage
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+      // Optional: Show a success message or perform any other desired actions
+      alert('Item added to cart!');
+      
+      // Update the cart badge
+      updateCartBadge();
+    }
+
+    // Function to display the number of items in the cart
+    function updateCartBadge() {
+      const cartBadge = document.getElementById('cartBadge');
+      cartBadge.textContent = cartItems.length;
+    }
+
+    // Call the function to update the cart badge when the page loads
+    updateCartBadge();
+  </script>
+    <script>
+      function openCartWindow() {
+        window.open('cart.html', 'Cart', 'width=400,height=400');
+      }
+    </script>
+  <!-- JavaScript content -->
+</body>
+<footer class="bg-light p-3 text-center">
+    <p>&copy; 2023 Bike Store. All rights reserved.</p>
+  </footer>
+</html>

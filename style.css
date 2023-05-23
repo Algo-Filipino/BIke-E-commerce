@@ -1,0 +1,164 @@
+    /* Reset default styles */
+    body, h1, h2, h3, p, ul, li {
+        margin: 0;
+        padding: 0;
+    }
+    
+    /* Apply styles to the navigation bar */
+/* Bikes Section Styles */
+#bikes {
+    padding: 80px 0;
+  }
+  
+  #bikes h2 {
+    font-size: 36px;
+    margin-bottom: 2rem;
+  }
+  
+  #bikes .card {
+    margin-bottom: 2rem;
+  }
+  
+  #bikes .card-img-top {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  #bikes .card-title {
+    font-size: 24px;
+    margin-bottom: 1rem;
+  }
+  
+  #bikes .card-text {
+    font-size: 16px;
+    margin-bottom: 1rem;
+  }
+  
+  #bikes .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  #bikes .btn-primary:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+  }
+  
+  #bikes .col-md-6 {
+    margin-bottom: 2rem;
+  }
+  
+  @media (min-width: 576px) {
+    .container {
+      padding: 0 30px;
+    }
+  
+    #bikes .card-columns {
+      column-count: 2;
+      column-gap: 30px;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .container {
+      padding: 0 50px;
+    }
+  
+    #bikes .card-columns {
+      column-count: 3;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .container {
+      padding: 0 70px;
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .container {
+      padding: 0;
+    }
+  }
+
+    /* Apply styles to the banner section */
+    #banner {
+        background-color: #f5f5f5;
+        text-align: center;
+        padding: 100px 0;
+    }
+    
+    #banner h1 {
+        font-size: 32px;
+        margin-bottom: 20px;
+    }
+    
+    #banner p {
+        font-size: 18px;
+        color: #888;
+        margin-bottom: 40px;
+    }
+    
+    #banner .btn {
+        display: inline-block;
+        background-color: #333;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 4px;
+        text-decoration: none;
+    }
+    
+    /* Apply styles to the featured products section */
+    #featured-products {
+        padding: 50px 0;
+        text-align: center;
+    }
+    
+    #featured-products h2 {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    
+    #featured-products .product {
+        display: inline-block;
+        width: 300px;
+        padding: 20px;
+        margin: 20px;
+        background-color: #f5f5f5;
+        text-align: center;
+    }
+    
+    #featured-products .product img {
+        width: 200px;
+        margin-bottom: 10px;
+    }
+    
+    #featured-products .product h3 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    
+    #featured-products .product p {
+        color: #888;
+        margin-bottom: 20px;
+    }
+    
+    #featured-products .product .btn {
+        display: inline-block;
+        background-color: #333;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 4px;
+        text-decoration: none;
+    }
+    
+    /* Apply styles to the footer section */
+    #footer {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+    }
+    
+    
