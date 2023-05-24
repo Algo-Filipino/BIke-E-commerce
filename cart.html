@@ -11,44 +11,70 @@
     .cart-items {
       margin-bottom: 20px;
     }
-
+  
     .cart-item {
       display: flex;
-      justify-content: space-between;
       align-items: center;
       margin-bottom: 10px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
     }
-
+  
+    .cart-item-action {
+      margin-left: auto;
+    }
+  
     .cart-item-image {
       width: 80px;
       height: 80px;
       object-fit: cover;
       margin-right: 10px;
     }
-
+  
     .cart-item-details {
       flex-grow: 1;
       margin-right: 10px;
     }
-
+  
     .cart-item-title {
       font-weight: bold;
+      margin-bottom: 5px;
     }
-
+  
     .cart-item-price {
       color: #dc3545;
       font-weight: bold;
+      margin-bottom: 5px;
     }
-
+  
     .cart-item-quantity {
       font-size: 0.8rem;
+      margin-bottom: 5px;
     }
-
+  
+    .cart-item-quantity input {
+      width: 50px;
+      text-align: center;
+      padding: 2px;
+    }
+  
+    .cart-item-total {
+      font-weight: bold;
+    }
+  
     .cart-total {
       text-align: right;
       font-weight: bold;
+      margin-top: 10px;
+    }
+  
+    .checkout-btn {
+      display: block;
+      width: 100%;
+      margin-top: 10px;
     }
   </style>
+  
 </head>
 
 <body>
@@ -59,7 +85,7 @@
       <!-- JavaScript code will dynamically populate the cart items here -->
     </div>
     <div class="cart-total">
-      Total: <span id="cartTotal">$0.00</span>
+      Total: $<span id="cartTotal">0.00</span>
     </div>
     <div>
       <button class="btn btn-primary" onclick="checkout()">Checkout</button>
@@ -82,13 +108,18 @@
         const cartItem = document.createElement('div');
         cartItem.classList.add('cart-item');
         cartItem.innerHTML = `
+          <div class="cart-item-action">
+            <button class="btn btn-danger" onclick="removeFromCart('${item.id}')">Remove</button>
+          </div>
           <img src="${getImageUrl(item.id)}" alt="Product Image" class="cart-item-image">
           <div class="cart-item-details">
             <h5 class="cart-item-title">${getItemTitle(item.id)}</h5>
+            <div>
+              Quantity: <input type="number" value="${item.quantity}" min="1" onchange="updateQuantity('${item.id}', this.value)">
+            </div>
             <p class="cart-item-price">$${getItemPrice(item.id)}</p>
-            <p class="cart-item-quantity">Quantity: ${item.quantity}</p>
+            <p>Price in $: $<span id="itemTotal_${item.id}">${(getItemPrice(item.id) * item.quantity).toFixed(2)}</span></p>
           </div>
-          <button class="btn btn-danger" onclick="removeFromCart('${item.id}')">Remove</button>
         `;
         cartItemsContainer.appendChild(cartItem);
       });
@@ -97,11 +128,28 @@
       updateCartTotal();
     }
 
+    // Function to update the quantity of a cart item
+    function updateQuantity(productId, quantity) {
+      // Findthe cart item corresponding to the product ID
+      const cartItem = cartItems.find(item => item.id === productId);
+
+      if (cartItem) {
+        // Update the quantity of the cart item
+        cartItem.quantity = parseInt(quantity);
+
+        // Store the updated cart items in local storage
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+        // Render the updated cart items
+        renderCartItems();
+      }
+    }
+
     // Function to update the cart total
     function updateCartTotal() {
       const cartTotal = document.getElementById('cartTotal');
       const total = calculateCartTotal();
-      cartTotal.textContent = '$' + total.toFixed(2);
+      cartTotal.textContent = total.toFixed(2);
     }
 
     // Function to calculate the cart total
@@ -138,10 +186,10 @@
       // Replace this with your own logic to retrieve the image URL for a product based on its ID
       // For example, you can use an object or database to map product IDs to image URLs
       if (productId === 'product1') {
-        return 'bike1.jpg';
+        return 'images/Trinx1.png';
       } else if (productId === 'product2') {
         return 'bike2.jpg';
-      }  else if (productId === 'hybrid_bike2') {
+      } else if (productId === 'hybrid_bike2') {
         return 'road_bike2.jpg';
       }
       // Add more conditions for other product IDs if needed
@@ -155,7 +203,7 @@
       // Replace this with your own logic to retrieve the title of a product based on its ID
       // For example, you can use an object or database to map product IDs to titles
       if (productId === 'product1') {
-        return 'Mountain Bike';
+        return 'Mountain Bike Trinx';
       } else if (productId === 'product2') {
         return 'Road Bike';
       } else if (productId === 'hybrid_bike2') {

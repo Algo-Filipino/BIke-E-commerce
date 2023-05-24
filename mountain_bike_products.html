@@ -128,51 +128,68 @@
         </div>
     </nav>
     <!-- Navigation content -->
-  <!-- Main content -->
-  <div class="container mt-4">
-    <h1 class="text-center mb-4">Mountain Bike Products</h1>
-
-    <div class="row">
-      <div class="col-lg-4 col-md-6">
-        <div class="card text-center">
-          <img src="mountain_bike1.jpg" class="card-img-top" alt="Mountain Bike 1">
-          <div class="card-body">
-            <h5 class="card-title">Mountain Bike 1</h5>
-            <p class="card-text">Product description for Mountain Bike 1.</p>
-            <a href="#" class="btn btn-primary" onclick="addToCart(event, 'mountain_bike1')">Add to Cart</a>
-          </div>
+ <!-- Main content -->
+<div class="container mt-4">
+  <div class="row">
+    <!-- Sidebar for brands -->
+    <div class="col-lg-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Brands</h5>
+          <ul class="list-group">
+            <li class="list-group-item">Brand 1</li>
+            <li class="list-group-item">Brand 2</li>
+            <li class="list-group-item">Brand 3</li>
+            <!-- Add more brand list items as needed -->
+          </ul>
         </div>
       </div>
-
-      <div class="col-lg-4 col-md-6">
-        <div class="card text-center">
-          <img src="mountain_bike2.jpg" class="card-img-top" alt="Mountain Bike 2">
-          <div class="card-body">
-            <h5 class="card-title product-title">Mountain Bike 2</h5>
-            <p class="card-text product-price">$234</p>
-            <a href="#" class="btn btn-primary" onclick="addToCart(event, 'mountain_bike2')">Add to Cart</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6">
-        <div class="card text-center">
-          <img src="mountain_bike3.jpg" class="card-img-top" alt="Mountain Bike 3">
-          <div class="card-body">
-            <h5 class="card-title">Mountain Bike 3</h5>
-            <p class="card-text">Product description for Mountain Bike 3.</p>
-            <a href="#" class="btn btn-primary" onclick="addToCart(event, 'mountain_bike3')">Add to Cart</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Add more product cards as needed -->
-
     </div>
 
- 
+    <!-- Products -->
+    <div class="col-lg-9">
+      <h1 class="text-center mb-4">Mountain Bike Products</h1>
 
+      <div class="row">
+        <div class="col-lg-4 col-md-6">
+          <div class="card text-center">
+            <img src="images/trinx1.png" class="card-img-top" alt="Mountain Bike 1">
+            <div class="card-body">
+              <h5 class="card-title">Mountain Bike 1</h5>
+              <p class="card-text">Product description for Mountain Bike 1.</p>
+              <a href="#" class="btn btn-primary" onclick="addToCart(event, 'mountain_bike1')">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="card text-center">
+            <img src="mountain_bike2.jpg" class="card-img-top" alt="Mountain Bike 2">
+            <div class="card-body">
+              <h5 class="card-title product-title">Mountain Bike 2</h5>
+              <p class="card-text product-price">$234</p>
+              <a href="#" class="btn btn-primary" onclick="addToCart(event, 'mountain_bike2')">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="card text-center">
+            <img src="mountain_bike3.jpg" class="card-img-top" alt="Mountain Bike 3">
+            <div class="card-body">
+              <h5 class="card-title">Mountain Bike 3</h5>
+              <p class="card-text">Product description for Mountain Bike 3.</p>
+              <a href="#" class="btn btn-primary" onclick="addToCart(event, 'mountain_bike3')">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add more product cards as needed -->
+
+      </div>
+    </div>
   </div>
+</div>
 
   <footer class="footer">
     <div class="container text-center">
