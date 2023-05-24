@@ -130,9 +130,6 @@
 
         // Render the updated cart items
         renderCartItems();
-
-        // Update the cart badge
-        updateCartBadge();
       }
     }
 
@@ -144,6 +141,8 @@
         return 'bike1.jpg';
       } else if (productId === 'product2') {
         return 'bike2.jpg';
+      }  else if (productId === 'hybrid_bike2') {
+        return 'road_bike2.jpg';
       }
       // Add more conditions for other product IDs if needed
 
@@ -159,6 +158,8 @@
         return 'Mountain Bike';
       } else if (productId === 'product2') {
         return 'Road Bike';
+      } else if (productId === 'hybrid_bike2') {
+        return 'Hybrid Bike';
       }
       // Add more conditions for other product IDs if needed
 
@@ -174,6 +175,8 @@
         return 999.99;
       } else if (productId === 'product2') {
         return 1499.99;
+      } else if (productId === 'hybrid_bike2') {
+        return 169.99;
       }
       // Add more conditions for other product IDs if needed
 
@@ -186,14 +189,13 @@
       // Replace this with your own logic to handle the checkout process
       // For example, you can redirect the user to a payment gateway or display a success message
 
+      // Show a success message
+      alert('Checkout completed!');
+
       // Clear the cart items and update the UI
       cartItems = [];
       localStorage.setItem('cartItems', JSON.stringify(cartItems));
       renderCartItems();
-      updateCartBadge();
-
-      // Show a success message
-      alert('Checkout completed!');
     }
 
     // Call the function to render the cart items when the page loads
