@@ -5,79 +5,61 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bike Store - Cart</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css"/>
+  <script src="js/jquery2.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="path/to/bootstrap.min.css">
+  <script src="path/to/bootstrap.bundle.min.js"></script>
   <style>
-    /* Custom styles for the cart */
-    .cart-items {
-      margin-bottom: 20px;
-    }
-  
     .cart-item {
       display: flex;
       align-items: center;
-      margin-bottom: 10px;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 10px;
+      margin-bottom: 20px;
     }
-  
-    .cart-item-action {
-      margin-left: auto;
-    }
-  
+
     .cart-item-image {
-      width: 80px;
-      height: 80px;
-      object-fit: cover;
+      width: 100px;
+      height: auto;
       margin-right: 10px;
     }
-  
+
     .cart-item-details {
       flex-grow: 1;
+    }
+
+    .cart-item-title {
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+
+    .cart-item-price {
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    .cart-item-action {
       margin-right: 10px;
     }
-  
-    .cart-item-title {
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-  
-    .cart-item-price {
-      color: #dc3545;
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-  
-    .cart-item-quantity {
-      font-size: 0.8rem;
-      margin-bottom: 5px;
-    }
-  
-    .cart-item-quantity input {
-      width: 50px;
-      text-align: center;
-      padding: 2px;
-    }
-  
-    .cart-item-total {
-      font-weight: bold;
-    }
-  
+
     .cart-total {
-      text-align: right;
+      margin-top: 20px;
+      font-size: 18px;
       font-weight: bold;
-      margin-top: 10px;
     }
-  
-    .checkout-btn {
-      display: block;
-      width: 100%;
-      margin-top: 10px;
+
+    .empty-cart-message {
+      text-align: center;
+      font-size: 16px;
+      font-style: italic;
+      color: gray;
     }
   </style>
-  
+
 </head>
 
 <body>
+
   <!-- Cart content -->
   <div class="container">
     <h1>Cart</h1>
@@ -85,13 +67,13 @@
       <!-- JavaScript code will dynamically populate the cart items here -->
     </div>
     <div class="cart-total">
-      Total: $<span id="cartTotal">0.00</span>
+      Total: ₱<span id="cartTotal">0.00</span>
     </div>
     <div>
-      <button class="btn btn-primary" onclick="checkout()">Checkout</button>
+      <button id="checkoutButton" class="btn btn-primary" onclick="checkout()">Checkout</button>
     </div>
   </div>
-
+  <script src="script"></script>
   <script>
     // Retrieve stored cart items from local storage, or initialize an empty array
     let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
@@ -99,38 +81,49 @@
     // Function to render the cart items
     function renderCartItems() {
       const cartItemsContainer = document.querySelector('.cart-items');
+      const cartTotal = document.getElementById('cartTotal');
 
       // Clear the existing cart items
       cartItemsContainer.innerHTML = '';
 
-      // Render each cart item
-      cartItems.forEach(item => {
-        const cartItem = document.createElement('div');
-        cartItem.classList.add('cart-item');
-        cartItem.innerHTML = `
-          <div class="cart-item-action">
-            <button class="btn btn-danger" onclick="removeFromCart('${item.id}')">Remove</button>
-          </div>
-          <img src="${getImageUrl(item.id)}" alt="Product Image" class="cart-item-image">
-          <div class="cart-item-details">
-            <h5 class="cart-item-title">${getItemTitle(item.id)}</h5>
-            <div>
-              Quantity: <input type="number" value="${item.quantity}" min="1" onchange="updateQuantity('${item.id}', this.value)">
+      if (cartItems.length === 0) {
+        // Cart is empty, display a message
+        cartTotal.textContent = '0.00';
+        const emptyCartMessage = document.createElement('div');
+        emptyCartMessage.classList.add('empty-cart-message');
+        emptyCartMessage.textContent = 'Your cart is empty';
+        cartItemsContainer.appendChild(emptyCartMessage);
+      } else {
+        // Render each cart item
+        cartItems.forEach(item => {
+          const cartItem = document.createElement('div');
+          cartItem.classList.add('cart-item');
+          cartItem.innerHTML = `
+            <div class="cart-item-action">
+              <button class="btn btn-danger" onclick="removeFromCart('${item.id}')">Remove</button>
             </div>
-            <p class="cart-item-price">$${getItemPrice(item.id)}</p>
-            <p>Price in $: $<span id="itemTotal_${item.id}">${(getItemPrice(item.id) * item.quantity).toFixed(2)}</span></p>
-          </div>
-        `;
-        cartItemsContainer.appendChild(cartItem);
-      });
+            <img src="${getImageUrl(item.id)}" alt="Product Image" class="cart-item-image">
+            <div class="cart-item-details">
+              <h5 class="cart-item-title">${getItemTitle(item.id)}</h5>
+              <div>
+                Quantity: <input type="number" value="${item.quantity}" min="1" onchange="updateQuantity('${item.id}', this.value)">
+              </div>
+              <p class="cart-item-price">₱${getItemPrice(item.id)}</p>
+              <p>Price in ₱: ₱<span id="itemTotal_${item.id}">${(getItemPrice(item.id) * item.quantity).toFixed(2)}</span></p>
+            </div>
+          `;
+          cartItemsContainer.appendChild(cartItem);
+        });
 
-      // Update the cart total
-      updateCartTotal();
+        // Update the cart total
+        const total = calculateCartTotal();
+        cartTotal.textContent = total.toFixed(2);
+      }
     }
 
     // Function to update the quantity of a cart item
     function updateQuantity(productId, quantity) {
-      // Findthe cart item corresponding to the product ID
+      // Find the cart item corresponding to the product ID
       const cartItem = cartItems.find(item => item.id === productId);
 
       if (cartItem) {
@@ -146,13 +139,6 @@
     }
 
     // Function to update the cart total
-    function updateCartTotal() {
-      const cartTotal = document.getElementById('cartTotal');
-      const total = calculateCartTotal();
-      cartTotal.textContent = total.toFixed(2);
-    }
-
-    // Function to calculate the cart total
     function calculateCartTotal() {
       let total = 0;
 
@@ -188,7 +174,7 @@
       if (productId === 'product1') {
         return 'images/Trinx1.png';
       } else if (productId === 'product2') {
-        return 'bike2.jpg';
+        return 'images/trek1.png';
       } else if (productId === 'hybrid_bike2') {
         return 'road_bike2.jpg';
       }
@@ -203,9 +189,9 @@
       // Replace this with your own logic to retrieve the title of a product based on its ID
       // For example, you can use an object or database to map product IDs to titles
       if (productId === 'product1') {
-        return 'Mountain Bike Trinx';
+        return 'MTB Trinx';
       } else if (productId === 'product2') {
-        return 'Road Bike';
+        return 'RB TREK';
       } else if (productId === 'hybrid_bike2') {
         return 'Hybrid Bike';
       }
@@ -220,35 +206,38 @@
       // Replace this with your own logic to retrieve the price of a product based on its ID
       // For example, you can use an object or database to map product IDs to prices
       if (productId === 'product1') {
-        return 999.99;
+        return 37000.00;
       } else if (productId === 'product2') {
-        return 1499.99;
+        return 46000.00;
       } else if (productId === 'hybrid_bike2') {
-        return 169.99;
+        return 800.00;
       }
       // Add more conditions for other product IDs if needed
 
       // Return a default price if the ID is not found
-      return 0;
+      return 0.00;
     }
 
-    // Function to handle the checkout process
+    // Function to handle the checkout button click
     function checkout() {
-      // Replace this with your own logic to handle the checkout process
-      // For example, you can redirect the user to a payment gateway or display a success message
-
+      // Clear the cart items array
+      cartItems = [];
+      const checkoutButton = document.getElementById('checkoutButton');
+      checkoutButton.disabled = true;
+  
       // Show a success message
       alert('Checkout completed!');
-
-      // Clear the cart items and update the UI
-      cartItems = [];
+      // Store the updated cart items (empty) in local storage
       localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+      // Render the updated cart items (empty)
       renderCartItems();
     }
 
-    // Call the function to render the cart items when the page loads
+    // Initial rendering of the cart items
     renderCartItems();
   </script>
+
 </body>
 
 </html>

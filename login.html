@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bike Store</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css"/>
+		<script src="js/jquery2.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="path/to/bootstrap.min.css">
+<script src="path/to/bootstrap.bundle.min.js"></script>
   <style>
     body {
       background-color: #f8f9fa;
     }
-
-   .navbar-nav .nav-link {
+    .navbar-nav .nav-link {
   color: #fff;
   font-weight: bold;
 }
@@ -20,13 +23,16 @@
   color: #fff;
   opacity: 0.8;
 }
+
 .navbar-nav .nav-link {
   padding: 10px 15px;
 }
+
 .navbar-nav .nav-link.active {
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 5px;
 }
+
 .navbar-nav {
   margin-left: auto;
 }
@@ -34,39 +40,39 @@
 .navbar-nav .nav-link {
   margin-left: 15px;
 }
+
 .social-icons a:hover {
   opacity: 0.8;
 }
 
-    .form-container {
-      max-width: 400px;
-      margin: 0 auto;
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
+.form-container {
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
 
-    .form-container h1 {
-      text-align: center;
-      margin-bottom: 30px;
-    }
+.form-container h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
 
-    .form-group label {
-      font-weight: bold;
-    }
+.form-group label {
+  font-weight: bold;
+}
 
-    .btn-primary {
-      width: 100%;
-    }
+.btn-primary {
+  width: 100%;
+}
 
-    footer {
-      background-color: #f8f9fa;
-      padding: 10px 0;
-    }
-  </style>
+footer {
+  background-color: #f8f9fa;
+  padding: 10px 0;
+}
+</style>
 </head>
-
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">Bike Store</a>
@@ -79,11 +85,15 @@
         <li class="nav-item">
           <a class="nav-link" href="index.html">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="bikes.html">Bikes</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="accessories.html">Accessories</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Products
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="bikes.html">Bikes</a>
+            <a class="dropdown-item" href="accessories.html">Accessories</a>
+          </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="contact.html">Contact Us</a>
@@ -97,13 +107,9 @@
         <li class="nav-item">
           <a class="nav-link" href="login.html">Login</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="signup.html">Sign Up</a>
-        </li>
       </ul>
     </div>
   </nav>
-
   <div class="container mt-4">
     <div class="form-container">
       <h1>Login</h1>
@@ -114,18 +120,57 @@
         </div>
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" class="form-control" id="password" placeholder="Enter your password">
+          <div class="input-group">
+            <input type="password" class="form-control" id="password" placeholder="Enter your password">
+            <div class="input-group-append">
+              <span class="input-group-text" id="password-toggle" style="cursor: pointer;"
+                onclick="togglePasswordVisibility()">Show</span>
+            </div>
+          </div>
         </div>
         <button type="submit" class="btn btn-primary">Login</button>
+        <p class="text-center mt-3">Don't have an account? <a href="signup.html">Create Account</a></p>
       </form>
     </div>
   </div>
-
   <footer class="bg-light p-3 text-center">
     <p>&copy; 2023 Bike Store. All rights reserved.</p>
   </footer>
-
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-</body>
+  <script>
+    function togglePasswordVisibility() {
+      var passwordInput = document.getElementById("password");
+      var passwordToggle = document.getElementById("password-toggle");
 
-</html>
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        passwordToggle.textContent = "Hide";
+      } else {
+        passwordInput.type = "password";
+        passwordToggle.textContent = "Show";
+      }
+    }
+
+    function login() {
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+
+      // Perform validation or login logic here
+      if (username === "admin" && password === "password") {
+        alert("Login successful!");
+        // Redirect to another page
+        window.location.href = "dashboard.html";
+      } else {
+        alert("Invalid username or password. Please try again.");
+      }
+    }
+
+    // Add an event listener to the form submit button
+    var loginForm = document.querySelector("form");
+    loginForm.addEventListener("submit", function (event) {
+      event.preventDefault(); // Prevent the form from submitting
+      login(); // Call the login function
+    });
+  </script>
+</body>
+</htm    

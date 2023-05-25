@@ -70,3 +70,61 @@ function addToCart(productId) {
   // Call the function to fetch and render the featured products
   fetchFeaturedProducts();
   
+
+
+
+
+  function toggleDetails(event) {
+    event.preventDefault();
+    const cardBody = event.target.parentElement;
+    const details = cardBody.querySelector('.details');
+    details.style.display = details.style.display === 'none' ? 'block' : 'none';
+  }
+
+
+
+  // Retrieve stored cart items from local storage, or initialize an empty array
+  let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+  // Function to handle adding items to the cart
+  function addToCart(event, productId) {
+    event.preventDefault();
+
+    // Check if the product is already in the cart
+    const existingItem = cartItems.find(item => item.id === productId);
+
+    if (existingItem) {
+      // If the product is already in the cart, increase the quantity
+      existingItem.quantity++;
+    } else {
+      // If the product is not in the cart, add it as a new item
+      const newItem = {
+        id: productId,
+        quantity: 1
+      };
+      cartItems.push(newItem);
+    }
+
+    // Store the updated cart items in local storage
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+    // Optional: Show a success message or perform any other desired actions
+    alert('Item added to cart!');
+    
+    // Update the cart badge
+    updateCartBadge();
+  }
+
+  // Function to display the number of items in the cart
+  function updateCartBadge() {
+    const cartBadge = document.getElementById('cartBadge');
+    cartBadge.textContent = cartItems.length;
+  }
+
+  // Call the function to update the cart badge when the page loads
+  updateCartBadge();
+
+
+  function openCartWindow() {
+    window.open('cart.html', 'Cart', 'width=400,height=400');
+  }

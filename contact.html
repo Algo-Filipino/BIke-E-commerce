@@ -73,27 +73,29 @@
         <li class="nav-item">
           <a class="nav-link" href="index.html">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="bikes.html">Bikes</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="accessories.html">Accessories</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="contact.html">Contact Us</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Products
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="bikes.html">Bikes</a>
+            <a class="dropdown-item" href="accessories.html">Accessories</a>
+          </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="about.html">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="cart.html">Cart</a>
+          <a class="nav-link" href="contact.html">Contact Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" onclick="openCartWindow()">Cart</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="login.html">Login</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="signup.html">Sign Up</a>
-        </li>
+        
       </ul>
     </div>
   </nav>
@@ -129,6 +131,7 @@
   <footer class="footer">
     <!-- Footer content -->
   </footer>
+  <script src="script.js">
 
   <!-- JavaScript -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

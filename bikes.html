@@ -6,35 +6,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bike Store</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css"/>
+		<script src="js/jquery2.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="path/to/bootstrap.min.css">
+<script src="path/to/bootstrap.bundle.min.js"></script>
   <style>
     /* Custom styles can be added here */
-    .navbar-nav .nav-link {
-  color: #fff;
-  font-weight: bold;
-}
+   
 
-.navbar-nav .nav-link:hover {
-  color: #fff;
-  opacity: 0.8;
-}
-.navbar-nav .nav-link {
-  padding: 10px 15px;
-}
-.navbar-nav .nav-link.active {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 5px;
-}
-.navbar-nav {
-  margin-left: auto;
-}
-
-.navbar-nav .nav-link {
-  margin-left: 15px;
-}
-.social-icons a:hover {
-  opacity: 0.8;
-}
     .card {
       transition: transform 0.3s;
       border: none;
@@ -78,18 +59,6 @@
       margin-top: 20px;
     }
 
-    .footer {
-      background-color: #f8f9fa;
-      padding: 20px;
-      margin-top: 50px;
-    }
-
-    .footer p {
-      margin: 0;
-    }
-
-    .footer a {
-      color: #333;
     }
   </style>
 </head>
@@ -107,31 +76,31 @@
         <li class="nav-item">
           <a class="nav-link" href="index.html">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="bikes.html">Bikes</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="accessories.html">Accessories</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Products
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="bikes.html">Bikes</a>
+            <a class="dropdown-item" href="accessories.html">Accessories</a>
+          </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="about.html">About</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="contact.html">Contact Us</a>
+          <a class="nav-link" href="contact.html">Contact Us</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" onclick="openCartWindow()">Cart</a>
+          <a class="nav-link" data-bs-toggle="modal" data-bs-target="#cartModal">Cart</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="login.html">Login</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="signup.html">Sign Up</a>
-        </li>
       </ul>
     </div>
   </nav>
-  <!-- Navigation content -->
 
   <!-- Main content -->
   <div class="container mt-4">
@@ -140,64 +109,47 @@
     <div class="row">
       <div class="col-lg-4 col-md-6">
         <div class="card text-center">
-          <img src="bike1.jpg" class="card-img-top" alt="Mountain Bike">
+          <img src="images/mtbbanner.jpg" class="card-img-top" alt="Mountain Bike">
           <div class="card-body">
             <h5 class="card-title">Mountain Bike</h5>
             <p class="card-text">Experience the thrill of off-road adventures with our mountain bikes.</p>
-            <a href="#" class="btn btn-primary" onclick="toggleDetails(event)">View Details</a>
-            <div class="details">
-              <h6>Mountain Bike Details:</h6>
-              <p>...</p>
-              <a href="mountain_bike_products.html" class="btn btn-primary">Shop Now</a> <!-- Added Shop Now button -->
-            </div>
+            <a href="mountain_bike_products.html" class="btn btn-primary">View Details</a>
+            
           </div>
         </div>
       </div>
 
       <div class="col-lg-4 col-md-6">
         <div class="card text-center">
-          <img src="bike2.jpg" class="card-img-top" alt="Road Bike">
+          <img src="images/rbbanner.jfif" class="card-img-top" alt="Road Bike">
           <div class="card-body">
             <h5 class="card-title">Road Bike</h5>
             <p class="card-text">Take on the open road with our high-performance road bikes.</p>
-            <a href="#" class="btn btn-primary" onclick="toggleDetails(event)">View Details</a>
-            <div class="details">
-              <h6>Road Bike Details:</h6>
-              <p>...</p>
-              <a href="road_bike_products.html" class="btn btn-primary">Shop Now</a> <!-- Added Shop Now button -->
-            </div>
+            <a href="road_bike_products.html" class="btn btn-primary">View Details</a>
+           
           </div>
         </div>
       </div>
 
       <div class="col-lg-4 col-md-6">
         <div class="card text-center">
-          <img src="bike3.jpg" class="card-img-top" alt="Hybrid Bike">
+          <img src="images/hybridbanner.jpg" class="card-img-top" alt="Hybrid Bike">
           <div class="card-body">
             <h5 class="card-title">Hybrid Bike</h5>
             <p class="card-text">Get the best of both worlds with our versatile hybrid bikes.</p>
-            <a href="#" class="btn btn-primary" onclick="toggleDetails(event)">View Details</a>
-            <div class="details">
-              <h6>Hybrid Bike Details:</h6>
-              <p>...</p>
-              <a href="hybrid_bike_products.html" class="btn btn-primary">Shop Now</a> <!-- Added Shop Now button -->
-            </div>
+            <a href=""hybrid_bike_products.html" class="btn btn-primary">View Details</a>
           </div>
         </div>
       </div>
 
       <div class="col-lg-4 col-md-6">
         <div class="card text-center">
-          <img src="bike4.jpg" class="card-img-top" alt="Electric Bike">
+          <img src="images/ebikebanner.jfif" class="card-img-top" alt="Electric Bike">
           <div class="card-body">
             <h5 class="card-title">Electric Bike</h5>
             <p class="card-text">Effortlessly glide through your rides with our electric bikes.</p>
-            <a href="#" class="btn btn-primary" onclick="toggleDetails(event)">View Details</a>
-            <div class="details">
-              <h6>Electric Bike Details:</h6>
-              <p>...</p>
-              <a href="electric_bike_products.html" class="btn btn-primary">Shop Now</a> <!-- Added Shop Now button -->
-            </div>
+            <a href="electric_bike_products.html" class="btn btn-primary">View Details</a>
+           
           </div>
         </div>
       </div>
@@ -205,46 +157,42 @@
       <!-- Add more bike cards here -->
       <div class="col-lg-4 col-md-6">
         <div class="card text-center">
-          <img src="bike5.jpg" class="card-img-top" alt="BMX Bike">
+          <img src="images/bmxbanner.jpg" class="card-img-top" alt="BMX Bike">
           <div class="card-body">
             <h5 class="card-title">BMX Bike</h5>
             <p class="card-text">Master the streets and perform amazing tricks with our BMX bikes.</p>
-            <a href="#" class="btn btn-primary" onclick="toggleDetails(event)">View Details</a>
-            <div class="details">
-              <h6>BMX Bike Details:</h6>
-              <p>...</p>
-              <a href="#" class="btn btn-primary">Shop Now</a> <!-- Added Shop Now button -->
-            </div>
+            <a href="bmx.html" class="btn btn-primary" >View Details</a>
+           
           </div>
         </div>
       </div>
-
-      <div class="col-lg-4 col-md-6">
-        <div class="card text-center">
-          <img src="bike6.jpg" class="card-img-top" alt="Cruiser Bike">
-          <div class="card-body">
-            <h5 class="card-title">Cruiser Bike</h5>
-            <p class="card-text">Enjoy a leisurely ride in style with our classic cruiser bikes.</p>
-            <a href="#" class="btn btn-primary" onclick="toggleDetails(event)">View Details</a>
-            <div class="details">
-              <h6>Cruiser Bike Details:</h6>
-              <p>...</p>
-              <a href="#" class="btn btn-primary">Shop Now</a> <!-- Added Shop Now button -->
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
   <!-- Main content -->
 
+    <!-- Cart Modal -->
+    <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="cartModalLabel">Cart</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div id="cartContent">
+              <p id="emptyCartMessage" class="text-center">Your cart is empty.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   <!-- Footer -->
-<footer class="footer">
+  <footer class="footer">
     <div class="container text-center">
       <p>&copy; 2023 Bike Store. All rights reserved.</p>
       <p>
-        <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a> | <a href="contact.html">Contact Us</a>
+        <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a> |
+        <a href="contact.html">Contact Us</a>
       </p>
       <div class="social-icons">
         <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
@@ -255,71 +203,30 @@
     </div>
   </footer>
   <!-- Footer content -->
-  
-  <!-- Footer content -->
 
   <!-- JavaScript -->
-  <script>
-    function toggleDetails(event) {
-      event.preventDefault();
-      const cardBody = event.target.parentElement;
-      const details = cardBody.querySelector('.details');
-      details.style.display = details.style.display === 'none' ? 'block' : 'none';
-    }
-  </script>
-  <!-- JavaScript content -->
-  <script>
-    // Retrieve stored cart items from local storage, or initialize an empty array
-    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-
-    // Function to handle adding items to the cart
-    function addToCart(event, productId) {
-      event.preventDefault();
-
-      // Check if the product is already in the cart
-      const existingItem = cartItems.find(item => item.id === productId);
-
-      if (existingItem) {
-        // If the product is already in the cart, increase the quantity
-        existingItem.quantity++;
-      } else {
-        // If the product is not in the cart, add it as a new item
-        const newItem = {
-          id: productId,
-          quantity: 1
-        };
-        cartItems.push(newItem);
-      }
-
-      // Store the updated cart items in local storage
-      localStorage.setItem('cartItems', JSON.stringify(cartItems));
-
-      // Optional: Show a success message or perform any other desired actions
-      alert('Item added to cart!');
-      
-      // Update the cart badge
-      updateCartBadge();
-    }
-
-    // Function to display the number of items in the cart
-    function updateCartBadge() {
-      const cartBadge = document.getElementById('cartBadge');
-      cartBadge.textContent = cartItems.length;
-    }
-
-    // Call the function to update the cart badge when the page loads
-    updateCartBadge();
-  </script>
-    <script>
-      function openCartWindow() {
-        window.open('cart.html', 'Cart', 'width=400,height=400');
-      }
-    </script>
-
+  <script src="script.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    function toggleDetails(event) {
+      event.preventDefault();
+      var details = event.target.parentNode.querySelector(".details");
+      if (details.style.display === "none") {
+        details.style.display = "block";
+      } else {
+        details.style.display = "none";
+      }
+    }
+  </script>
+<script>
+  var cartModal = document.getElementById('cartModal');
+  cartModal.addEventListener('show.bs.modal', function () {
+    var cartContent = document.getElementById('cartContent');
+    cartContent.innerHTML = '<iframe src="cart.html" style="width: 100%; height: 400px; border: none;"></iframe>';
+  });
+</script>
 
-</body>
 
 </html>
