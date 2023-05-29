@@ -61,18 +61,18 @@
 <body>
 
   <!-- Cart content -->
-  <div class="container">
-    <h1>Cart</h1>
-    <div class="cart-items">
-      <!-- JavaScript code will dynamically populate the cart items here -->
+    <div class="container">
+      <h1>Cart</h1> 
+      <div class="cart-items">
+        <!-- JavaScript code will dynamically populate the cart items here -->
+      </div>
+      <div class="cart-total">
+        Total: ₱<span id="cartTotal">0.00</span>
+      </div>
+      <div>
+        <button id="checkoutButton" class="btn btn-primary" onclick="checkout()">Checkout</button>
+      </div>
     </div>
-    <div class="cart-total">
-      Total: ₱<span id="cartTotal">0.00</span>
-    </div>
-    <div>
-      <button id="checkoutButton" class="btn btn-primary" onclick="checkout()">Checkout</button>
-    </div>
-  </div>
   <script src="script"></script>
   <script>
     // Retrieve stored cart items from local storage, or initialize an empty array
@@ -171,12 +171,31 @@
     function getImageUrl(productId) {
       // Replace this with your own logic to retrieve the image URL for a product based on its ID
       // For example, you can use an object or database to map product IDs to image URLs
-      if (productId === 'product1') {
-        return 'images/Trinx1.png';
-      } else if (productId === 'product2') {
-        return 'images/trek1.png';
-      } else if (productId === 'hybrid_bike2') {
-        return 'road_bike2.jpg';
+      if (productId === 'rb1') {
+        return 'images/rb-PARIS-RIVAL-B102-ORANGE.jpg';
+      } else if (productId === 'mtb2') {
+        return 'images/mtb-CERVELO-ZHT-5-GX-AXS-MOSS-KHAKI-1.jpg';
+      } else if (productId === 'gravel1') {
+        return 'images/gravel-YQB51IZD.jpg';
+      }
+      else if (productId === 'gravel2') {
+        return 'images/gravel-00EVTV170CGRX--BLKLGSTDHN.jpg';
+      } else if (productId === 'triath1') {
+        return 'images/triath-P3_red_R8000-1.jpg';
+      } else if (productId === 'accessories-pump1') {
+        return 'images/air-pump-PUMPS_MAMMOTH_2STAGE_BLK.jpg';
+      } else if (productId === 'ebike1') {
+        return 'images/e-bike-sct_silnce10_m_b_0-_1.jpg';
+      } else if (productId === 'pedal1') {
+        return 'images/pedal-TIME-XPRO-XPRESSO-FREE-CLEAT.jpg';
+      } else if (productId === 'saddle1') {
+        return 'images/saddle-PR30_Black_1.jpg';
+      } else if (productId === 'chainring1') {
+        return 'images/chainring-Powertap_C1_Chainrings_1.jpg';
+      }  else if (productId === 'shifter1') {
+        return 'images/brake-ST-R9100-SET.jpg';
+      }  else if (productId === 'tire1') {
+        return 'images/tire-Mountain-King-II-Black-22_1.jpg';
       }
       // Add more conditions for other product IDs if needed
 
@@ -188,13 +207,32 @@
     function getItemTitle(productId) {
       // Replace this with your own logic to retrieve the title of a product based on its ID
       // For example, you can use an object or database to map product IDs to titles
-      if (productId === 'product1') {
-        return 'MTB Trinx';
-      } else if (productId === 'product2') {
-        return 'RB TREK';
-      } else if (productId === 'hybrid_bike2') {
-        return 'Hybrid Bike';
+      if (productId === 'rb1') {
+        return 'PINARELLO PARIS RIVAL AXS BIKE';
+      } else if (productId === 'mtb2') {
+        return 'CERVELO ZHT-5 GX EAGLE AXS BIKE';
+      } else if (productId === 'gravel1') {
+        return '>BIANCHI ZOLDER PRO BIKE';
+      }  else if (productId === 'gravel2') {
+        return 'PIVOT E-VAULT TEAM GRX DI2 BIKE';
+      } else if (productId === 'triath1') {
+        return '>CERVELO P3 ULTEGRA BIKE';
+      }  else if (productId === 'accessories-pump1') {
+        return 'BLACKBURN 2STAGE ANYVALVE AIR PUMP';
+      }  else if (productId === 'ebike1') {
+        return 'SCOTT SILENCE ERIDE 10 BIKE';
+      }  else if (productId === 'pedal1') {
+        return 'TIME XPRO/XPRESSO ICLIC CLEATS - FLOATING';
+      } else if (productId === 'saddle1') {
+        return 'ISM PR 3.0 SADDLE';
+      } else if (productId === 'chainring1') {
+        return 'POWERTAP C1 CHAINRINGS';
+      }  else if (productId === 'shifter1') {
+        return 'SHIMANO DURA-ACE ST-R9100 SHIFTER/BRAKE LEVER SET';
+      }  else if (productId === 'tire1') {
+        return 'CONTINENTAL MOUNTAIN KING II 27.5" CLINCHER TIRE';
       }
+
       // Add more conditions for other product IDs if needed
 
       // Return a default title if the ID is not found
@@ -205,13 +243,32 @@
     function getItemPrice(productId) {
       // Replace this with your own logic to retrieve the price of a product based on its ID
       // For example, you can use an object or database to map product IDs to prices
-      if (productId === 'product1') {
-        return 37000.00;
-      } else if (productId === 'product2') {
-        return 46000.00;
-      } else if (productId === 'hybrid_bike2') {
-        return 800.00;
+      if (productId === 'rb1') {
+        return 262750.00;
+      } else if (productId === 'mtb2') {
+        return 244800.00;
+      } else if (productId === 'gravel1') {
+        return 193800.00;
+      } else if (productId === 'gravel2') {
+        return 382499.00;
+      } else if (productId === 'triath1') {
+        return 183549.00;
+      }  else if (productId === 'accessories-pump1') {
+        return 1785.00;
+      } else if (productId === 'ebike1') {
+        return 178500.00;
+      } else if (productId === 'pedal1') {
+        return 1173.00;
+      } else if (productId === 'saddle1') {
+        return 1173.00;
+      } else if (productId === 'chainring1') {
+        return 20349.0;
+      } else if (productId === 'shifter1') {
+        return 28049.99;
+      }  else if (productId === 'tire1') {
+        return 1121.49;
       }
+      //
       // Add more conditions for other product IDs if needed
 
       // Return a default price if the ID is not found
@@ -236,6 +293,8 @@
 
     // Initial rendering of the cart items
     renderCartItems();
+
+    
   </script>
 
 </body>

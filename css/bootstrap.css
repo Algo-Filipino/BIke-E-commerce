@@ -1419,9 +1419,11 @@ progress {
   }
 
   .col-lg-3 {
-    flex: 0 0 auto;
-    width: 25%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, auto));
+    gap: 1.5rem;
   }
+  
 
   .col-lg-4 {
     flex: 0 0 auto;

@@ -2,92 +2,504 @@
 <html lang="en">
 
 <head>
+  <!-- Head content -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Road Bike Products</title>
+  <title>Mountain Bike Products</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="css/bootstrap.min.css"/>
 		<script src="js/jquery2.js"></script>
 		<script src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="path/to/bootstrap.min.css">
 <script src="path/to/bootstrap.bundle.min.js"></script>
-  
 </head>
 
 <body>
-       <!-- Navigation -->
-       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Bike Store</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                Products
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="bikes.html">Bikes</a>
-                <a class="dropdown-item" href="accessories.html">Accessories</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about.html">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" onclick="openCartWindow()">Cart</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="login.html">Login</a>
-            </li>
+        <!-- Navigation -->
+        <header class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container">
+            <a class="navbar-brand" href="#">Bike Store</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Products
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="bikes.html">Bikes</a></li>
+                    <li><a class="dropdown-item" href="accessories.html">Accessories</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="contact.html">Contact Us</a>
+                </li>
+              </ul>
+            </div>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-primary" type="submit">
+                <i class="fas fa-search"></i> <!-- Font Awesome search icon -->
+              </button>
+            </form>
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#cartModal">
+                  <i class="fas fa-shopping-cart"></i> <!-- Font Awesome shopping cart icon -->
+                  Cart
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="login.html">
+                  <i class="fas fa-user"></i> <!-- Font Awesome user icon -->
+                  Login
+                </a>
+              </li>
+            </ul>
+          </div>
           
-          </ul>
-        </div>
-      </nav>
-      
-      
-  <!-- Navigation content -->
-  <div class="container mt-4">
-    <h1 class="text-center mb-4">Electric Bike Products</h1>
+        </header>
+       
+        
+    <!-- Navigation content -->
+ <!-- Main content -->
+ <section class="shop container">
+  <h2 class="section-title">Mountain Bike Products</h2>
+  <div class="brand-selector" style="margin-bottom: 5rem;">
+    <select id="brand-select">
+        <option value="all">Mountain Bike Brands</option>
+        <option value="brand1">Brand 1</option>
+        <option value="brand2">Brand 2</option>
+        <option value="brand3">Brand 3</option>
+    </select>
+</div>
 
-    <div class="row">
-      <div class="col-lg-4 col-md-6">
-        <div class="card text-center">
-          <img src="road_bike1.jpg" class="card-img-top" alt="Road Bike 1">
-          <div class="card-body">
-            <h5 class="card-title">Electric Bike 1</h5>
-            <p class="card-text">Description of Electric Bike 1.</p>
-            <a href="#" class="btn btn-primary" onclick="addToCart(event, 'hybrid_bike1')">Add to Cart</a>
+  <div class="row shop-content">
+
+    <div class="col-lg-3 col-md-6 col-sm-12">
+      <div class="product-box">
+        <div class="product-image">
+          <img src="images/trek1.png" alt="" class="product-img">
+          <div class="overlay">
+            <a href="#" onclick="addToCart(event, 'product2')" class="btn btn-primary btn-buy">
+              <i class="fas fa-shopping-cart"></i> Add to Cart
+            </a>
+          </div>
+        </div>
+        <div class="product-details">
+          <h2 class="product-title">TREK 1</h2>
+          <span class="price">₱25,800.00</span>
+          <div class="specs">
+            <h3>Specifications:</h3>
+            <ul>
+              <li>Specification 1</li>
+              <li>Specification 2</li>
+              <li>Specification 3</li>
+            </ul>
+          </div>
+          <div class="ratings" style="color: yellow; font-size: 30px;">
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
           </div>
         </div>
       </div>
+    </div>
+    
+    
+    
 
-      <div class="col-lg-4 col-md-6">
-        <div class="card text-center">
-          <img src="road_bike2.jpg" class="card-img-top" alt="Road Bike 2">
-          <div class="card-body">
-            <h5 class="card-title">Electric 2</h5>
-            <p class="card-text">Description of Electric Bike 2.</p>
-            <a href="#" class="btn btn-primary" onclick="addToCart(event, 'hybrid_bike2')">Add to Cart</a>
+    <div class="col-lg-3 col-md-6 col-sm-12">
+      <div class="product-box">
+        <div class="product-image">
+          <img src="images/trek1.png" alt="" class="product-img">
+          <div class="overlay">
+            <a href="#" onclick="addToCart(event, 'product2')" class="btn btn-primary btn-buy">
+              <i class="fas fa-shopping-cart"></i> Add to Cart
+            </a>
+          </div>
+        </div>
+        <div class="product-details">
+          <h2 class="product-title">TREK 1</h2>
+          <span class="price">₱25,800.00</span>
+          <div class="specs">
+            <h3>Specifications:</h3>
+            <ul>
+              <li>Specification 1</li>
+              <li>Specification 2</li>
+              <li>Specification 3</li>
+            </ul>
+          </div>
+          <div class="ratings" style="color: yellow; font-size: 30px;">
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
           </div>
         </div>
       </div>
+    </div>
+    
+    
 
-      <!-- Add more road bike cards here -->
+    <div class="col-lg-3 col-md-6 col-sm-12">
+      <div class="product-box">
+        <div class="product-image">
+          <img src="images/trek1.png" alt="" class="product-img">
+          <div class="overlay">
+            <a href="#" onclick="addToCart(event, 'product2')" class="btn btn-primary btn-buy">
+              <i class="fas fa-shopping-cart"></i> Add to Cart
+            </a>
+          </div>
+        </div>
+        <div class="product-details">
+          <h2 class="product-title">TREK 1</h2>
+          <span class="price">₱25,800.00</span>
+          <div class="specs">
+            <h3>Specifications:</h3>
+            <ul>
+              <li>Specification 1</li>
+              <li>Specification 2</li>
+              <li>Specification 3</li>
+            </ul>
+          </div>
+          <div class="ratings" style="color: yellow; font-size: 30px;">
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-lg-3 col-md-6 col-sm-12">
+      <div class="product-box">
+        <div class="product-image">
+          <img src="images/trek1.png" alt="" class="product-img">
+          <div class="overlay">
+            <a href="#" onclick="addToCart(event, 'product2')" class="btn btn-primary btn-buy">
+              <i class="fas fa-shopping-cart"></i> Add to Cart
+            </a>
+          </div>
+        </div>
+        <div class="product-details">
+          <h2 class="product-title">TREK 1</h2>
+          <span class="price">₱25,800.00</span>
+          <div class="specs">
+            <h3>Specifications:</h3>
+            <ul>
+              <li>Specification 1</li>
+              <li>Specification 2</li>
+              <li>Specification 3</li>
+            </ul>
+          </div>
+          <div class="ratings" style="color: yellow; font-size: 30px;">
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+          </div>
+        </div>
+      </div>
+      <br>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-12">
+      <div class="product-box">
+        <div class="product-image">
+          <img src="images/trek1.png" alt="" class="product-img">
+          <div class="overlay">
+            <a href="#" onclick="addToCart(event, 'product2')" class="btn btn-primary btn-buy">
+              <i class="fas fa-shopping-cart"></i> Add to Cart
+            </a>
+          </div>
+        </div>
+        <div class="product-details">
+          <h2 class="product-title">TREK 1</h2>
+          <span class="price">₱25,800.00</span>
+          <div class="specs">
+            <h3>Specifications:</h3>
+            <ul>
+              <li>Specification 1</li>
+              <li>Specification 2</li>
+              <li>Specification 3</li>
+            </ul>
+          </div>
+          <div class="ratings" style="color: yellow; font-size: 30px;">
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+
+    <div class="col-lg-3 col-md-6 col-sm-12">
+      <div class="product-box">
+        <div class="product-image">
+          <img src="images/trek1.png" alt="" class="product-img">
+          <div class="overlay">
+            <a href="#" onclick="addToCart(event, 'product2')" class="btn btn-primary btn-buy">
+              <i class="fas fa-shopping-cart"></i> Add to Cart
+            </a>
+          </div>
+        </div>
+        <div class="product-details">
+          <h2 class="product-title">TREK 1</h2>
+          <span class="price">₱25,800.00</span>
+          <div class="specs">
+            <h3>Specifications:</h3>
+            <ul>
+              <li>Specification 1</li>
+              <li>Specification 2</li>
+              <li>Specification 3</li>
+            </ul>
+          </div>
+          <div class="ratings" style="color: yellow; font-size: 30px;">
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+
+    <div class="col-lg-3 col-md-6 col-sm-12">
+      <div class="product-box">
+        <div class="product-image">
+          <img src="images/trek1.png" alt="" class="product-img">
+          <div class="overlay">
+            <a href="#" onclick="addToCart(event, 'product2')" class="btn btn-primary btn-buy">
+              <i class="fas fa-shopping-cart"></i> Add to Cart
+            </a>
+          </div>
+        </div>
+        <div class="product-details">
+          <h2 class="product-title">TREK 1</h2>
+          <span class="price">₱25,800.00</span>
+          <div class="specs">
+            <h3>Specifications:</h3>
+            <ul>
+              <li>Specification 1</li>
+              <li>Specification 2</li>
+              <li>Specification 3</li>
+            </ul>
+          </div>
+          <div class="ratings" style="color: yellow; font-size: 30px;">
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-12">
+      <div class="product-box">
+        <div class="product-image">
+          <img src="images/trek1.png" alt="" class="product-img">
+          <div class="overlay">
+            <a href="#" onclick="addToCart(event, 'product2')" class="btn btn-primary btn-buy">
+              <i class="fas fa-shopping-cart"></i> Add to Cart
+            </a>
+          </div>
+        </div>
+        <div class="product-details">
+          <h2 class="product-title">TREK 1</h2>
+          <span class="price">₱25,800.00</span>
+          <div class="specs">
+            <h3>Specifications:</h3>
+            <ul>
+              <li>Specification 1</li>
+              <li>Specification 2</li>
+              <li>Specification 3</li>
+            </ul>
+          </div>
+          <div class="ratings" style="color: yellow; font-size: 30px;">
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+          </div>
+        </div>
+      </div>
+      <br>
+    </div>
+
+    <div class="col-lg-3 col-md-6 col-sm-12">
+      <div class="product-box">
+        <div class="product-image">
+          <img src="images/trek1.png" alt="" class="product-img">
+          <div class="overlay">
+            <a href="#" onclick="addToCart(event, 'product2')" class="btn btn-primary btn-buy">
+              <i class="fas fa-shopping-cart"></i> Add to Cart
+            </a>
+          </div>
+        </div>
+        <div class="product-details">
+          <h2 class="product-title">TREK 1</h2>
+          <span class="price">₱25,800.00</span>
+          <div class="specs">
+            <h3>Specifications:</h3>
+            <ul>
+              <li>Specification 1</li>
+              <li>Specification 2</li>
+              <li>Specification 3</li>
+            </ul>
+          </div>
+          <div class="ratings" style="color: yellow; font-size: 30px;">
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+          </div>
+        </div>
+      </div>
+      <br>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-12">
+      <div class="product-box">
+        <div class="product-image">
+          <img src="images/trek1.png" alt="" class="product-img">
+          <div class="overlay">
+            <a href="#" onclick="addToCart(event, 'product2')" class="btn btn-primary btn-buy">
+              <i class="fas fa-shopping-cart"></i> Add to Cart
+            </a>
+          </div>
+        </div>
+        <div class="product-details">
+          <h2 class="product-title">TREK 1</h2>
+          <span class="price">₱25,800.00</span>
+          <div class="specs">
+            <h3>Specifications:</h3>
+            <ul>
+              <li>Specification 1</li>
+              <li>Specification 2</li>
+              <li>Specification 3</li>
+            </ul>
+          </div>
+          <div class="ratings" style="color: yellow; font-size: 30px;">
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-12">
+      <div class="product-box">
+        <div class="product-image">
+          <img src="images/trek1.png" alt="" class="product-img">
+          <div class="overlay">
+            <a href="#" onclick="addToCart(event, 'product2')" class="btn btn-primary btn-buy">
+              <i class="fas fa-shopping-cart"></i> Add to Cart
+            </a>
+          </div>
+        </div>
+        <div class="product-details">
+          <h2 class="product-title">TREK 1</h2>
+          <span class="price">₱25,800.00</span>
+          <div class="specs">
+            <h3>Specifications:</h3>
+            <ul>
+              <li>Specification 1</li>
+              <li>Specification 2</li>
+              <li>Specification 3</li>
+            </ul>
+          </div>
+          <div class="ratings" style="color: yellow; font-size: 30px;">
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-12">
+      <div class="product-box">
+        <div class="product-image">
+          <img src="images/trek1.png" alt="" class="product-img">
+          <div class="overlay">
+            <a href="#" onclick="addToCart(event, 'product2')" class="btn btn-primary btn-buy">
+              <i class="fas fa-shopping-cart"></i> Add to Cart
+            </a>
+          </div>
+        </div>
+        <div class="product-details">
+          <h2 class="product-title">TREK 1</h2>
+          <span class="price">₱25,800.00</span>
+          <div class="specs">
+            <h3>Specifications:</h3>
+            <ul>
+              <li>Specification 1</li>
+              <li>Specification 2</li>
+              <li>Specification 3</li>
+            </ul>
+          </div>
+          <div class="ratings" style="color: yellow; font-size: 30px;">
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+     </div>
+  </div>
+</section>
+
+
+
+   
+<div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="cartModalLabel">Cart</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="cartContent">
+          <p id="emptyCartMessage" class="text-center">Your cart is empty.</p>
+        </div>
+      </div>
     </div>
   </div>
+</div>
 
-  <!-- Footer -->
-<footer class="footer">
+  <footer class="footer">
     <div class="container text-center">
       <p>&copy; 2023 Bike Store. All rights reserved.</p>
       <p>
@@ -102,13 +514,59 @@
     </div>
   </footer>
   <!-- Footer content -->
-
-  !-- JavaScript functions -->
-  <script src="script.js">
-
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <!-- JavaScript functions -->
+   <!-- JavaScript -->
+   <script>
+    // Retrieve stored cart items from local storage, or initialize an empty array
+    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+  
+    // Function to handle adding items to the cart
+    function addToCart(event, productId) {
+      event.preventDefault();
+  
+      // Check if the product is already in the cart
+      const existingItem = cartItems.find(item => item.id === productId);
+  
+      if (existingItem) {
+        // If the product is already in the cart, increase the quantity
+        existingItem.quantity++;
+      } else {
+        // If the product is not in the cart, add it as a new item
+        const newItem = {
+          id: productId,
+          quantity: 1
+        };
+        cartItems.push(newItem);
+      }
+  
+      // Store the updated cart items in local storage
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  
+      // Optional: Show a success message or perform any other desired actions
+      alert('Item added to cart!');
+      
+      // Update the cart badge
+      updateCartBadge();
+    }
+  
+    // Function to display the number of items in the cart
+    function updateCartBadge() {
+      const cartBadge = document.getElementById('cartBadge');
+      cartBadge.textContent = cartItems.length;
+    }
+  
+    // Call the function to update the cart badge when the page loads
+    updateCartBadge();
+  </script>
+   <script>
+    var cartModal = document.getElementById('cartModal');
+    cartModal.addEventListener('show.bs.modal', function () {
+      var cartContent = document.getElementById('cartContent');
+      cartContent.innerHTML = '<iframe src="cart.html" style="width: 100%; height: 400px; border: none;"></iframe>';
+    });
+    </script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
 </body>
 
 </html>
