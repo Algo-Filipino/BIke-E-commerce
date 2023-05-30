@@ -1,87 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bike Store</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link rel="stylesheet" href="css/bootstrap.min.css"/>
-  <link rel="stylesheet" href="path/to/bootstrap.min.css">
-  <script src="js/jquery2.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="path/to/bootstrap.bundle.min.js"></script>
+		<script src="js/jquery2.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="path/to/bootstrap.min.css">
+<script src="path/to/bootstrap.bundle.min.js"></script>
   <style>
-    body {
-      background-color: #f8f9fa;
-    }
+   
 
-    .form-container {
-      max-width: 400px;
-      margin: 0 auto;
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
+.form-container {
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
 
-    .form-container h1 {
-      text-align: center;
-      margin-bottom: 30px;
-    }
+.form-container h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
 
-    .form-group label {
-      font-weight: bold;
-    }
+.form-group label {
+  font-weight: bold;
+}
 
-    .form-control {
-      margin-bottom: 20px;
-    }
+.btn-primary {
+  width: 100%;
+}
 
-    .btn-primary {
-      width: 100%;
-    }
-  </style>
+
+</style>
 </head>
-
 <body>
-  <header class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand" href="#">Bike Store</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Home</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              Products
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="bikes.html">Bikes</a></li>
-              <li><a class="dropdown-item" href="accessories.html">Accessories</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="about.html">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contact.html">Contact Us</a>
-          </li>
-        </ul>
-      </div>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-primary" type="button" onclick="performSearch()">
-          <i class="fas fa-search"></i> <!-- Font Awesome search icon -->
-        </button>
-      </form>
-      <ul class="navbar-nav ms-auto">
+<!-- Navigation -->
+<header class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">Bike Store</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Products
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="bikes.html">Bikes</a></li>
+            <li><a class="dropdown-item" href="accessories.html">Accessories</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html">Contact Us</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#cartModal">
             <i class="fas fa-shopping-cart"></i> <!-- Font Awesome shopping cart icon -->
@@ -96,38 +84,49 @@
         </li>
       </ul>
     </div>
-  </header>
-
-  <div class="container mt-4">
-    <div class="form-container">
-      <h1>Sign Up</h1>
-      <form>
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" class="form-control" id="name" placeholder="Enter your name">
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" class="form-control" id="email" placeholder="Enter your email">
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <div class="input-group">
-            <input type="password" class="form-control" id="password" placeholder="Enter your password">
-            <div class="input-group-append">
-              <span class="input-group-text" id="password-toggle" style="cursor: pointer;" onclick="togglePasswordVisibility()">Show</span>
-            </div>
-          </div>
-          <small id="password-strength" class="form-text"></small>
-        </div>
-        <div class="form-group">
-          <label for="confirm-password">Confirm Password</label>
-          <input type="password" class="form-control" id="confirm-password" placeholder="Confirm your password">
-        </div>
-        <button type="submit" class="btn btn-primary">Sign Up</button>
-      </form>
-    </div>
+    <form class="d-flex">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-primary" type="submit">
+        <i class="fas fa-search"></i> <!-- Font Awesome search icon -->
+      </button>
+    </form>
   </div>
+</header>
+
+
+
+<div class="container mt-4">
+  <div class="form-container">
+    <h1>Sign Up</h1>
+    <form>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" placeholder="Enter your name">
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" placeholder="Enter your email">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="input-group">
+          <input type="password" class="form-control" id="password" placeholder="Enter your password">
+          <div class="input-group-append">
+            <span class="input-group-text" id="password-toggle" style="cursor: pointer;" onclick="togglePasswordVisibility()">Show</span>
+          </div>
+        </div>
+        <small id="password-strength" class="form-text"></small>
+      </div>
+      <div class="form-group">
+        <label for="confirm-password">Confirm Password</label>
+        <input type="password" class="form-control" id="confirm-password" placeholder="Confirm your password">
+      </div>
+      <button type="submit" class="btn btn-primary">Sign Up</button>
+    </form>
+  </div>
+</div>
+
+
 
   <footer class="footer" style="margin-top: 6rem;">
     <div class="container">
@@ -166,30 +165,8 @@
       <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a> | <a href="contact.html">Contact Us</a>
     </div>
   </footer>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
   <script>
-    function signUp() {
-      var name = document.getElementById("name").value;
-      var email = document.getElementById("email").value;
-      var password = document.getElementById("password").value;
-      var confirmPassword = document.getElementById("confirm-password").value;
-
-      // Perform validation or sign-up logic here
-      if (name === "" || email === "" || password === "" || confirmPassword === "") {
-        alert("Please fill in all fields.");
-        return;
-      }
-
-      if (password !== confirmPassword) {
-        alert("Passwords do not match. Please try again.");
-      } else {
-        // Perform sign-up logic and redirect to another page
-        alert("Sign up successful!");
-        window.location.href = "login.html";
-      }
-    }
-
     function togglePasswordVisibility() {
       var passwordInput = document.getElementById("password");
       var passwordToggle = document.getElementById("password-toggle");
@@ -203,39 +180,28 @@
       }
     }
 
-    function checkPasswordStrength() {
+    function login() {
+      var username = document.getElementById("username").value;
       var password = document.getElementById("password").value;
-      var passwordStrength = document.getElementById("password-strength");
 
-      // Check password strength and provide feedback
-      if (password.length === 0) {
-        passwordStrength.textContent = "";
-      } else if (password.length < 6) {
-        passwordStrength.textContent = "Password is too weak.";
-        passwordStrength.style.color = "red";
-      } else if (password.length < 8) {
-        passwordStrength.textContent = "Password is weak.";
-        passwordStrength.style.color = "orange";
-      } else if (password.search(/[a-z]/) === -1 || password.search(/[A-Z]/) === -1) {
-        passwordStrength.textContent = "Password should include both uppercase and lowercase letters.";
-        passwordStrength.style.color = "orange";
+      // Perform validation or login logic here
+      if (username === "admin" && password === "password") {
+        alert("Login successful!");
+        // Redirect to another page
+        window.location.href = "dashboard.html";
       } else {
-        passwordStrength.textContent = "Password is strong.";
-        passwordStrength.style.color = "green";
+        alert("Invalid username or password. Please try again.");
       }
     }
 
-    // Add event listeners to the form elements
-    var signUpForm = document.querySelector("form");
-    signUpForm.addEventListener("submit", function (event) {
+    // Add an event listener to the form submit button
+    var loginForm = document.querySelector("form");
+    loginForm.addEventListener("submit", function (event) {
       event.preventDefault(); // Prevent the form from submitting
-      signUp(); // Call the sign-up function
+      login(); // Call the login function
     });
-
-    var passwordInput = document.getElementById("password");
-    passwordInput.addEventListener("input", checkPasswordStrength);
   </script>
-</body>
-
-</html>
   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+</body>
+</htm    

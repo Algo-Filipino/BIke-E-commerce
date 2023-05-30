@@ -6,27 +6,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact - Bike Store</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css"/>
+		<script src="js/jquery2.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="path/to/bootstrap.min.css">
+<script src="path/to/bootstrap.bundle.min.js"></script>
   <style>
     /* Custom styles */
 
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f8f9fa;
-    }
-
-    .navbar-brand {
-      font-weight: bold;
-    }
-
-    .container {
-      margin-top: 30px;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 30px;
-    }
+   
 
     .form-group label {
       font-weight: bold;
@@ -48,57 +40,62 @@
       border-color: #0062cc;
     }
 
-    .footer {
-      background-color: #f8f9fa;
-      padding: 20px 0;
-      text-align: center;
-    }
-
-    .footer p {
-      margin-bottom: 0;
-    }
+   
   </style>
 </head>
 
 <body>
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Bike Store</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="index.html">Home</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Products
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="bikes.html">Bikes</a>
-            <a class="dropdown-item" href="accessories.html">Accessories</a>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="about.html">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="contact.html">Contact Us</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" onclick="openCartWindow()">Cart</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="login.html">Login</a>
-        </li>
-        
-      </ul>
+  <header class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Bike Store</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Products
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="bikes.html">Bikes</a></li>
+              <li><a class="dropdown-item" href="accessories.html">Accessories</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#cartModal">
+              <i class="fas fa-shopping-cart"></i> <!-- Font Awesome shopping cart icon -->
+              Cart
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login.html">
+              <i class="fas fa-user"></i> <!-- Font Awesome user icon -->
+              Login
+            </a>
+          </li>
+        </ul>
+      </div>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-primary" type="submit">
+          <i class="fas fa-search"></i> <!-- Font Awesome search icon -->
+        </button>
+      </form>
     </div>
-  </nav>
+  </header>
   <!-- Navigation content -->
 
   <!-- Main content -->
@@ -123,20 +120,56 @@
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
-    </div>
+    </div><br>
 
   </div>
 
   <!-- Footer -->
-  <footer class="footer">
-    <!-- Footer content -->
-  </footer>
+  <!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h5>Quick Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Bikes</a></li>
+          <li><a href="#">Accessories</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h5>Connect With Us</h5>
+        <ul class="list-unstyled">
+          <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+          <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+          <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+          <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h5>Contact Info</h5>
+        <ul class="list-unstyled">
+          <li><i class="fas fa-phone"></i> +1 123-456-7890</li>
+          <li><i class="fas fa-envelope"></i> info@bikestore.com</li>
+          <li><i class="fas fa-map-marker-alt"></i> Philippines</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="text-center">
+    &copy; 2023 Bike Store. All rights reserved.<br>
+    <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a> | <a href="contact.html">Contact Us</a>
+  </div>
+</footer>
+
   <script src="script.js">
 
-  <!-- JavaScript -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
 </body>
 
 </html>
