@@ -50,11 +50,6 @@
     
     
 
-
-    /* Apply styles to the banner section */
-
-    
-    /* Apply styles to the footer section */
    /* Footer */
 .footer {
   background-color: #333;
@@ -123,7 +118,7 @@
 }
 
 .footer .contact-info {
-  font-size: 16px;
+  font-size: 16px;.pr
   margin-bottom: 20px;
 }
 
@@ -214,7 +209,18 @@
     max-height: 300px; /* Set the height to accommodate the details */
   }
   
-  
+  h2.product-title{
+    font-size: 20px;
+  }
+  span.price{
+    font-size: 20px;
+    font-weight: bold;
+    text-align: ;
+  }
+
+  .specs h3{
+    font-size: 14px;
+  }
   .cart-container {
     position: absolute;
     top: 10px;
@@ -252,7 +258,7 @@
     animation: fadeInUp 0.5s ease-out;
   }
 
-  /* Example animation for the jumbotron */
+
   .jumbotron {
     animation: fadeIn 1s ease-out;
   }

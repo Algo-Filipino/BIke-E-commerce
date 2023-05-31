@@ -5,7 +5,7 @@
   <!-- Head content -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mountain Bike Products</title>
+  <title>Road Bike</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="css/bootstrap.min.css"/>
 		<script src="js/jquery2.js"></script>
@@ -46,13 +46,12 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#cartModal">
-              <i class="fas fa-shopping-cart"></i> <!-- Font Awesome shopping cart icon -->
-              Cart
+              <i class="fas fa-shopping-cart"></i> 
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="login.html">
-              <i class="fas fa-user"></i> <!-- Font Awesome user icon -->
+              <i class="fas fa-user"></i> 
               Login
             </a>
           </li>
@@ -61,419 +60,308 @@
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-primary" type="submit">
-          <i class="fas fa-search"></i> <!-- Font Awesome search icon -->
+          <i class="fas fa-search"></i> 
         </button>
       </form>
     </div>
   </header>
+        
     <!-- Navigation content -->
  <!-- Main content -->
  <section class="shop container">
-  <h2 class="section-title">Mountain Bike Products</h2>
-  <div class="brand-selector" style="margin-bottom: 5rem;">
-    <select id="brand-select">
-        <option value="all">Mountain Bike Brands</option>
-        <option value="brand1">Brand 1</option>
-        <option value="brand2">Brand 2</option>
-        <option value="brand3">Brand 3</option>
-    </select>
-</div>
 
-  <div class="row shop-content">
-
-    <div class="col-lg-3 col-md-6 col-sm-12">
-      <div class="product-box">
-        <div class="product-image">
-          <img src="images/trek1.png" alt="" class="product-img">
-          <div class="overlay">
-            <a href="#" onclick="addToCart(event, 'product2')" class="btn btn-primary btn-buy">
-              <i class="fas fa-shopping-cart"></i> Add to Cart
-            </a>
+  
+    <div class="row shop-content">
+      <h2 class="section-title" style="text-align: center; margin-bottom: 2rem;" >Road Bike Products</h2>
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="product-box">
+          <div class="product-image">
+            <img src="images/rb-PARIS-RIVAL-B102-ORANGE.jpg" alt="" class="product-img">
+            <div class="overlay">
+              <a href="#" onclick="addToCart(event, 'rb1')" class="btn btn-primary btn-buy">
+                <i class="fas fa-shopping-cart"></i> Add to Cart
+              </a>
+            </div>
+          </div>
+          <div class="product-details">
+            <h2 class="product-title">PINARELLO PARIS RIVAL AXS BIKE</h2>
+            <span class="price">₱262,750.00</span>
+            <div class="specs">
+              <h3>Specifications:</h3>
+              <ul>
+                <li>Color:  B102 Orange</li>
+                <li>Frame Size: 60cm</li>
+                <li>SKU: 10135391</li>
+                
+              </ul>
+            </div>
+            <div class="ratings" style="color: yellow; font-size: 30px;">
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+            </div>
           </div>
         </div>
-        <div class="product-details">
-          <h2 class="product-title">TREK 1</h2>
-          <span class="price">₱25,800.00</span>
-          <div class="specs">
-            <h3>Specifications:</h3>
-            <ul>
-              <li>Specification 1</li>
-              <li>Specification 2</li>
-              <li>Specification 3</li>
-            </ul>
+        <br>
+      </div>
+      
+      
+      
+  
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="product-box">
+          <div class="product-image">
+            <img src="images/rb-3T-STRADA-ICR-RIVAL-AXS-2X-RED-BLACK.jpg" alt="" class="product-img">
+            <div class="overlay">
+              <a href="#" onclick="addToCart(event, 'rb2')" class="btn btn-primary btn-buy">
+                <i class="fas fa-shopping-cart"></i> Add to Cart
+              </a>
+            </div>
           </div>
-          <div class="ratings" style="color: yellow; font-size: 30px;">
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
+          <div class="product-details">
+            <h2 class="product-title">3T STRADA ICR RIVAL AXS 2X BIKE</h2>
+            <span class="price" style="text-align: center;">₱274,950.00</span>
+            <div class="specs">
+              <h3>Specifications:</h3>
+              <ul>
+                <li>Color:
+                  Red / Black</li>
+                <li>Color:
+                  Red / Black
+                  Frame Size:
+                  51cm / 54cm / 56cm / 58cm</li>
+                <li>SKU: 10144951</li>
+              </ul>
+            </div>
+            <div class="ratings" style="color: yellow; font-size: 30px;">
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    
-    
-    
-
-    <div class="col-lg-3 col-md-6 col-sm-12">
-      <div class="product-box">
-        <div class="product-image">
-          <img src="images/trek1.png" alt="" class="product-img">
-          <div class="overlay">
-            <a href="#" onclick="addToCart(event, 'product2')" class="btn btn-primary btn-buy">
-              <i class="fas fa-shopping-cart"></i> Add to Cart
-            </a>
+      
+      
+  
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="product-box">
+          <div class="product-image">
+            <img src="images/rb-3T-STRADA-ICR-FORCE-CHROME.jpg" alt="" class="product-img">
+            <div class="overlay">
+              <a href="#" onclick="addToCart(event, 'rb3')" class="btn btn-primary btn-buy">
+                <i class="fas fa-shopping-cart"></i> Add to Cart
+              </a>
+            </div>
           </div>
-        </div>
-        <div class="product-details">
-          <h2 class="product-title">TREK 1</h2>
-          <span class="price">₱25,800.00</span>
-          <div class="specs">
-            <h3>Specifications:</h3>
-            <ul>
-              <li>Specification 1</li>
-              <li>Specification 2</li>
-              <li>Specification 3</li>
-            </ul>
-          </div>
-          <div class="ratings" style="color: yellow; font-size: 30px;">
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    
-
-    <div class="col-lg-3 col-md-6 col-sm-12">
-      <div class="product-box">
-        <div class="product-image">
-          <img src="images/trek1.png" alt="" class="product-img">
-          <div class="overlay">
-            <a href="#" onclick="addToCart(event, 'product2')" class="btn btn-primary btn-buy">
-              <i class="fas fa-shopping-cart"></i> Add to Cart
-            </a>
-          </div>
-        </div>
-        <div class="product-details">
-          <h2 class="product-title">TREK 1</h2>
-          <span class="price">₱25,800.00</span>
-          <div class="specs">
-            <h3>Specifications:</h3>
-            <ul>
-              <li>Specification 1</li>
-              <li>Specification 2</li>
-              <li>Specification 3</li>
-            </ul>
-          </div>
-          <div class="ratings" style="color: yellow; font-size: 30px;">
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
+          <div class="product-details">
+            <h2 class="product-title">3T STRADA ICR FORCE AXS 2X BIKE</h2>
+            <span class="price">₱309,950.00</span>
+            <div class="specs">
+              <h3>Specifications:</h3>
+              <ul>
+                <li>Color:
+                  Chrome </li>
+                <li>Frame Size:
+                  51cm / 54cm</li>
+                <li>SKU: 10144957</li>
+              </ul>
+            </div>
+            <div class="ratings" style="color: yellow; font-size: 30px;">
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    
-    <div class="col-lg-3 col-md-6 col-sm-12">
-      <div class="product-box">
-        <div class="product-image">
-          <img src="images/trek1.png" alt="" class="product-img">
-          <div class="overlay">
-            <a href="#" onclick="addToCart(event, 'product2')" class="btn btn-primary btn-buy">
-              <i class="fas fa-shopping-cart"></i> Add to Cart
-            </a>
+      
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="product-box">
+          <div class="product-image">
+            <img src="images/rb-3T-STRADA-ICR-RED-AXS-1X-NAVY-BLACK.jpg" alt="" class="product-img">
+            <div class="overlay">
+              <a href="#" onclick="addToCart(event, 'rb4')" class="btn btn-primary btn-buy">
+                <i class="fas fa-shopping-cart"></i> Add to Cart
+              </a>
+            </div>
+          </div>
+          <div class="product-details">
+            <h2 class="product-title">3T STRADA ICR RED AXS 1X BIKE</h2>
+            <span class="price">₱382,449.00</span>
+            <div class="specs">
+              <h3>Specifications:</h3>
+              <ul>
+                <li>Color:
+                  Navy / Black</li>
+                <li>Color:
+                  Navy / Black
+                  Frame Size:
+                  51cm54cm</li>
+                <li>SKU: 10149436</li>
+              </ul>
+            </div>
+            <div class="ratings" style="color: yellow; font-size: 30px;">
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+            </div>
           </div>
         </div>
-        <div class="product-details">
-          <h2 class="product-title">TREK 1</h2>
-          <span class="price">₱25,800.00</span>
-          <div class="specs">
-            <h3>Specifications:</h3>
-            <ul>
-              <li>Specification 1</li>
-              <li>Specification 2</li>
-              <li>Specification 3</li>
-            </ul>
+        <br>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="product-box">
+          <div class="product-image">
+            <img src="images/rb-Colnago_Arabesque_RADK.jpg" alt="" class="product-img">
+            <div class="overlay">
+              <a href="#" onclick="addToCart(event, 'rb5')" class="btn btn-primary btn-buy">
+                <i class="fas fa-shopping-cart"></i> Add to Cart
+              </a>
+            </div>
           </div>
-          <div class="ratings" style="color: yellow; font-size: 30px;">
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
+          <div class="product-details">
+            <h2 class="product-title">COLNAGO ARABESQUE</h2>
+            <span class="price">₱196497.50</span>
+            <div class="specs">
+              <h3>Specifications:</h3>
+              <ul>
+                <li>Color:
+                  RADK / RALB / RARD / RAWH</li>
+                <li>Color:
+                  RADKRALBRARDRAWH
+                  Frame Size:
+                  49cm / 50cm / 51cm / 52cm / 53cm / 54cm /55cm / 56cm</li>
+                <li>SKU: 10062603</li>
+              </ul>
+            </div>
+            <div class="ratings" style="color: yellow; font-size: 30px;">
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+            </div>
           </div>
         </div>
       </div>
-      <br>
-    </div>
-    <div class="col-lg-3 col-md-6 col-sm-12">
-      <div class="product-box">
-        <div class="product-image">
-          <img src="images/trek1.png" alt="" class="product-img">
-          <div class="overlay">
-            <a href="#" onclick="addToCart(event, 'product2')" class="btn btn-primary btn-buy">
-              <i class="fas fa-shopping-cart"></i> Add to Cart
-            </a>
+      
+      
+  
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="product-box">
+          <div class="product-image">
+            <img src="images/rb-Colnago-E64-BMGR_1.jpg" alt="" class="product-img">
+            <div class="overlay">
+              <a href="#" onclick="addToCart(event, 'rb6')" class="btn btn-primary btn-buy">
+                <i class="fas fa-shopping-cart"></i> Add to Cart
+              </a>
+            </div>
           </div>
-        </div>
-        <div class="product-details">
-          <h2 class="product-title">TREK 1</h2>
-          <span class="price">₱25,800.00</span>
-          <div class="specs">
-            <h3>Specifications:</h3>
-            <ul>
-              <li>Specification 1</li>
-              <li>Specification 2</li>
-              <li>Specification 3</li>
-            </ul>
-          </div>
-          <div class="ratings" style="color: yellow; font-size: 30px;">
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    
-
-    <div class="col-lg-3 col-md-6 col-sm-12">
-      <div class="product-box">
-        <div class="product-image">
-          <img src="images/trek1.png" alt="" class="product-img">
-          <div class="overlay">
-            <a href="#" onclick="addToCart(event, 'product2')" class="btn btn-primary btn-buy">
-              <i class="fas fa-shopping-cart"></i> Add to Cart
-            </a>
-          </div>
-        </div>
-        <div class="product-details">
-          <h2 class="product-title">TREK 1</h2>
-          <span class="price">₱25,800.00</span>
-          <div class="specs">
-            <h3>Specifications:</h3>
-            <ul>
-              <li>Specification 1</li>
-              <li>Specification 2</li>
-              <li>Specification 3</li>
-            </ul>
-          </div>
-          <div class="ratings" style="color: yellow; font-size: 30px;">
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
+          <div class="product-details">
+            <h2 class="product-title">COLNAGO E-64 ULTEGRA DI2 BIKE</h2>
+            <span class="price">₱407,997.45 </span>
+            <div class="specs">
+              <h3>Specifications:</h3>
+              <ul>
+                <li>Color:
+                  BMGRB / MOR</li>
+                <li>
+                  Frame Size:
+                  43s / 46s / 49s</li>
+                <li>SKU: 10110063</li>
+              </ul>
+            </div>
+            <div class="ratings" style="color: yellow; font-size: 30px;">
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    
-    
-
-    <div class="col-lg-3 col-md-6 col-sm-12">
-      <div class="product-box">
-        <div class="product-image">
-          <img src="images/trek1.png" alt="" class="product-img">
-          <div class="overlay">
-            <a href="#" onclick="addToCart(event, 'product2')" class="btn btn-primary btn-buy">
-              <i class="fas fa-shopping-cart"></i> Add to Cart
-            </a>
+      
+      
+  
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="product-box">
+          <div class="product-image">
+            <img src="images/rb-COLNAGO-V3-MKRD.jpg" alt="" class="product-img">
+            <div class="overlay">
+              <a href="#" onclick="addToCart(event, 'rb7')" class="btn btn-primary btn-buy">
+                <i class="fas fa-shopping-cart"></i> Add to Cart
+              </a>
+            </div>
           </div>
-        </div>
-        <div class="product-details">
-          <h2 class="product-title">TREK 1</h2>
-          <span class="price">₱25,800.00</span>
-          <div class="specs">
-            <h3>Specifications:</h3>
-            <ul>
-              <li>Specification 1</li>
-              <li>Specification 2</li>
-              <li>Specification 3</li>
-            </ul>
-          </div>
-          <div class="ratings" style="color: yellow; font-size: 30px;">
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-6 col-sm-12">
-      <div class="product-box">
-        <div class="product-image">
-          <img src="images/trek1.png" alt="" class="product-img">
-          <div class="overlay">
-            <a href="#" onclick="addToCart(event, 'product2')" class="btn btn-primary btn-buy">
-              <i class="fas fa-shopping-cart"></i> Add to Cart
-            </a>
-          </div>
-        </div>
-        <div class="product-details">
-          <h2 class="product-title">TREK 1</h2>
-          <span class="price">₱25,800.00</span>
-          <div class="specs">
-            <h3>Specifications:</h3>
-            <ul>
-              <li>Specification 1</li>
-              <li>Specification 2</li>
-              <li>Specification 3</li>
-            </ul>
-          </div>
-          <div class="ratings" style="color: yellow; font-size: 30px;">
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
+          <div class="product-details">
+            <h2 class="product-title">COLNAGO V3 DISC RIVAL AXS BIKE</h2>
+            <span class="price">₱244,997,55</span>
+            <div class="specs">
+              <h3>Specifications:</h3>
+              <ul>
+                <li>Color:
+                  MKRD / MKGR</li>
+                <li>Frame Size: 52cm</li>
+                <li>SKU: 10140492</li>
+              </ul>
+            </div>
+            <div class="ratings" style="color: yellow; font-size: 30px;">
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+            </div>
           </div>
         </div>
       </div>
-      <br>
-    </div>
-
-    <div class="col-lg-3 col-md-6 col-sm-12">
-      <div class="product-box">
-        <div class="product-image">
-          <img src="images/trek1.png" alt="" class="product-img">
-          <div class="overlay">
-            <a href="#" onclick="addToCart(event, 'product2')" class="btn btn-primary btn-buy">
-              <i class="fas fa-shopping-cart"></i> Add to Cart
-            </a>
+  
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="product-box">
+          <div class="product-image">
+            <img src="images/rb-COLNAGO-C68-TI-KAIZEN-PRO-BLACK.jpg" alt="" class="product-img">
+            <div class="overlay">
+              <a href="#" onclick="addToCart(event, 'rb8')" class="btn btn-primary btn-buy">
+                <i class="fas fa-shopping-cart"></i> Add to Cart
+              </a>
+            </div>
+          </div>
+          <div class="product-details">
+            <h2 class="product-title">COLNAGO C68 TI DISC KAIZEN PRO BLACK BIKE</h2>
+            <span class="price">₱1,170,450</span>
+            <div class="specs">
+              <h3>Specifications:</h3>
+              <ul>
+                <li>Color:HTBK</li>
+                <li>Frame Size: 48.5cm</li>
+                <li>SKU: 10144472</li>
+              </ul>
+            </div>
+            <div class="ratings" style="color: yellow; font-size: 30px;">
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+            </div>
           </div>
         </div>
-        <div class="product-details">
-          <h2 class="product-title">TREK 1</h2>
-          <span class="price">₱25,800.00</span>
-          <div class="specs">
-            <h3>Specifications:</h3>
-            <ul>
-              <li>Specification 1</li>
-              <li>Specification 2</li>
-              <li>Specification 3</li>
-            </ul>
-          </div>
-          <div class="ratings" style="color: yellow; font-size: 30px;">
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-          </div>
-        </div>
+        <br>
       </div>
-      <br>
+  
+      
     </div>
-    <div class="col-lg-3 col-md-6 col-sm-12">
-      <div class="product-box">
-        <div class="product-image">
-          <img src="images/trek1.png" alt="" class="product-img">
-          <div class="overlay">
-            <a href="#" onclick="addToCart(event, 'product2')" class="btn btn-primary btn-buy">
-              <i class="fas fa-shopping-cart"></i> Add to Cart
-            </a>
-          </div>
-        </div>
-        <div class="product-details">
-          <h2 class="product-title">TREK 1</h2>
-          <span class="price">₱25,800.00</span>
-          <div class="specs">
-            <h3>Specifications:</h3>
-            <ul>
-              <li>Specification 1</li>
-              <li>Specification 2</li>
-              <li>Specification 3</li>
-            </ul>
-          </div>
-          <div class="ratings" style="color: yellow; font-size: 30px;">
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-6 col-sm-12">
-      <div class="product-box">
-        <div class="product-image">
-          <img src="images/trek1.png" alt="" class="product-img">
-          <div class="overlay">
-            <a href="#" onclick="addToCart(event, 'product2')" class="btn btn-primary btn-buy">
-              <i class="fas fa-shopping-cart"></i> Add to Cart
-            </a>
-          </div>
-        </div>
-        <div class="product-details">
-          <h2 class="product-title">TREK 1</h2>
-          <span class="price">₱25,800.00</span>
-          <div class="specs">
-            <h3>Specifications:</h3>
-            <ul>
-              <li>Specification 1</li>
-              <li>Specification 2</li>
-              <li>Specification 3</li>
-            </ul>
-          </div>
-          <div class="ratings" style="color: yellow; font-size: 30px;">
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-6 col-sm-12">
-      <div class="product-box">
-        <div class="product-image">
-          <img src="images/trek1.png" alt="" class="product-img">
-          <div class="overlay">
-            <a href="#" onclick="addToCart(event, 'product2')" class="btn btn-primary btn-buy">
-              <i class="fas fa-shopping-cart"></i> Add to Cart
-            </a>
-          </div>
-        </div>
-        <div class="product-details">
-          <h2 class="product-title">TREK 1</h2>
-          <span class="price">₱25,800.00</span>
-          <div class="specs">
-            <h3>Specifications:</h3>
-            <ul>
-              <li>Specification 1</li>
-              <li>Specification 2</li>
-              <li>Specification 3</li>
-            </ul>
-          </div>
-          <div class="ratings" style="color: yellow; font-size: 30px;">
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-          </div>
-        </div>
-      </div>
-    </div>
-     </div>
-  </div>
-</section>
+  </section>
 
 
 
@@ -495,7 +383,7 @@
   </div>
 </div>
 
-!-- Footer -->
+
 <footer class="footer">
   <div class="container">
     <div class="row">
@@ -584,6 +472,21 @@
       var cartContent = document.getElementById('cartContent');
       cartContent.innerHTML = '<iframe src="cart.html" style="width: 100%; height: 400px; border: none;"></iframe>';
     });
+    </script>
+
+    <script>
+      $(document).ready(function() {
+  // When Brand 1 is clicked
+  $('#brand1').click(function(event) {
+    event.preventDefault(); // Prevent the default link behavior
+
+    // Modify the display of the desired elements
+    $('.product-box').hide(); // Hide all product boxes
+    $('.brand1-products').show(); // Show the specific products for Brand 1
+  });
+});
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     </script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>

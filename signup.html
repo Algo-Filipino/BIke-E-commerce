@@ -8,37 +8,33 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link rel="stylesheet" href="css/bootstrap.min.css"/>
-		<script src="js/jquery2.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="path/to/bootstrap.min.css">
-<script src="path/to/bootstrap.bundle.min.js"></script>
+  <script src="js/jquery2.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="path/to/bootstrap.min.css">
+  <script src="path/to/bootstrap.bundle.min.js"></script>
   <style>
-   
+    .form-container {
+      max-width: 400px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
 
-.form-container {
-  max-width: 400px;
-  margin: 0 auto;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+    .form-container h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
 
-.form-container h1 {
-  text-align: center;
-  margin-bottom: 30px;
-}
+    .form-group label {
+      font-weight: bold;
+    }
 
-.form-group label {
-  font-weight: bold;
-}
-
-.btn-primary {
-  width: 100%;
-}
-
-
-</style>
+    .btn-primary {
+      width: 100%;
+    }
+  </style>
 </head>
 <body>
 <!-- Navigation -->
@@ -93,8 +89,6 @@
   </div>
 </header>
 
-
-
 <div class="container mt-4">
   <div class="form-container">
     <h1>Sign Up</h1>
@@ -110,7 +104,7 @@
       <div class="form-group">
         <label for="password">Password</label>
         <div class="input-group">
-          <input type="password" class="form-control" id="password" placeholder="Enter your password">
+          <input type="password" class="form-control" id="password" placeholder="Enter your password" oninput="checkPasswordStrength(this.value)">
           <div class="input-group-append">
             <span class="input-group-text" id="password-toggle" style="cursor: pointer;" onclick="togglePasswordVisibility()">Show</span>
           </div>
@@ -126,82 +120,108 @@
   </div>
 </div>
 
-
-
-  <footer class="footer" style="margin-top: 6rem;">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <h5>Quick Links</h5>
-          <ul class="list-unstyled">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Bikes</a></li>
-            <li><a href="#">Accessories</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact Us</a></li>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <h5>Connect With Us</h5>
-          <ul class="list-unstyled">
-            <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
-            <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
-            <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
-            <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <h5>Contact Info</h5>
-          <ul class="list-unstyled">
-            <li><i class="fas fa-phone"></i> +1 123-456-7890</li>
-            <li><i class="fas fa-envelope"></i> info@bikestore.com</li>
-            <li><i class="fas fa-map-marker-alt"></i> Philippines</li>
-          </ul>
-        </div>
+<footer class="footer" style="margin-top: 6rem;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h5>Quick Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Bikes</a></li>
+          <li><a href="#">Accessories</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h5>Connect With Us</h5>
+        <ul class="list-unstyled">
+          <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+          <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+          <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+          <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h5>Contact Info</h5>
+        <ul class="list-unstyled">
+          <li><i class="fas fa-phone"></i> +1 123-456-7890</li>
+          <li><i class="fas fa-envelope"></i> info@bikestore.com</li>
+          <li><i class="fas fa-map-marker-alt"></i> Philippines</li>
+        </ul>
       </div>
     </div>
-    <div class="text-center">
-      &copy; 2023 Bike Store. All rights reserved.<br>
-      <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a> | <a href="contact.html">Contact Us</a>
-    </div>
-  </footer>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-  <script>
-    function togglePasswordVisibility() {
-      var passwordInput = document.getElementById("password");
-      var passwordToggle = document.getElementById("password-toggle");
+  </div>
+  <div class="text-center">
+    &copy; 2023 Bike Store. All rights reserved.<br>
+    <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a> | <a href="contact.html">Contact Us</a>
+  </div>
+</footer>
 
-      if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-        passwordToggle.textContent = "Hide";
-      } else {
-        passwordInput.type = "password";
-        passwordToggle.textContent = "Show";
-      }
-    }
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script>
+function signUp() {
+  var name = document.getElementById("name").value;
+  var email = document.getElementById("email").value;
+  var password = document.getElementById("password").value;
+  var confirmPassword = document.getElementById("confirm-password").value;
 
-    function login() {
-      var username = document.getElementById("username").value;
-      var password = document.getElementById("password").value;
+  // Perform validation or sign-up logic here
+  if (password !== confirmPassword) {
+    alert("Passwords do not match. Please try again.");
+  } else {
+    // Perform sign-up logic and redirect to another page
+    alert("Sign up successful!");
+    window.location.href = "login.html";
+  }
+}
 
-      // Perform validation or login logic here
-      if (username === "admin" && password === "password") {
-        alert("Login successful!");
-        // Redirect to another page
-        window.location.href = "dashboard.html";
-      } else {
-        alert("Invalid username or password. Please try again.");
-      }
-    }
+function togglePasswordVisibility() {
+  var passwordInput = document.getElementById("password");
+  var passwordToggle = document.getElementById("password-toggle");
 
-    // Add an event listener to the form submit button
-    var loginForm = document.querySelector("form");
-    loginForm.addEventListener("submit", function (event) {
-      event.preventDefault(); // Prevent the form from submitting
-      login(); // Call the login function
-    });
-  </script>
-  
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+    passwordToggle.textContent = "Hide";
+  } else {
+    passwordInput.type = "password";
+    passwordToggle.textContent = "Show";
+  }
+}
+
+function checkPasswordStrength() {
+  var password = document.getElementById("password").value;
+  var passwordStrength = document.getElementById("password-strength");
+
+  // Check password strength and provide feedback
+  if (password.length === 0) {
+    passwordStrength.textContent = "";
+  } else if (password.length < 6) {
+    passwordStrength.textContent = "Password is too weak.";
+    passwordStrength.style.color = "red";
+  } else if (password.length < 8) {
+    passwordStrength.textContent = "Password is weak.";
+    passwordStrength.style.color = "orange";
+  } else if (password.search(/[a-z]/) === -1 || password.search(/[A-Z]/) === -1) {
+    passwordStrength.textContent = "Password should include both uppercase and lowercase letters.";
+    passwordStrength.style.color = "orange";
+  } else {
+    passwordStrength.textContent = "Password is strong.";
+    passwordStrength.style.color = "green";
+  }
+}
+
+// Add event listeners to the form elements
+var signUpForm = document.querySelector("form");
+signUpForm.addEventListener("submit", function (event) {
+  event.preventDefault(); // Prevent the form from submitting
+  signUp(); // Call the sign-up function
+});
+
+var passwordInput = document.getElementById("password");
+passwordInput.addEventListener("input", checkPasswordStrength);
+</script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
 </body>
-</htm    
+</html>

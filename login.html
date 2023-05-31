@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bike Store</title>
+  <title>Login</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
@@ -114,7 +114,8 @@
             </div>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary">Login</button>
+        <button type="button" class="btn btn-primary" onclick="login()">Login</button>
+
         <p class="text-center mt-3">Don't have an account? <a href="signup.html">Create Account</a></p>
       </form>
     </div>
@@ -170,19 +171,22 @@
         passwordToggle.textContent = "Show";
       }
     }
-
     function login() {
       var username = document.getElementById("username").value;
       var password = document.getElementById("password").value;
 
-      // Perform validation or login logic here
+      
       if (username === "admin" && password === "password") {
         alert("Login successful!");
-        // Redirect to another page
-        window.location.href = "dashboard.html";
+        redirectToIndex(); // Call the redirect function
       } else {
         alert("Invalid username or password. Please try again.");
       }
+    }
+
+    // Function to redirect to index.html
+    function redirectToIndex() {
+      window.location.href = "index.html";
     }
 
     // Add an event listener to the form submit button
@@ -191,6 +195,18 @@
       event.preventDefault(); // Prevent the form from submitting
       login(); // Call the login function
     });
+  </script>
+</body>
+
+</html>
+Now, when the user enters the correct username and password, an alert message will appear, and upon clicking "OK," the redirectToIndex() function will be called, redirecting the user to index.html.
+
+
+
+
+
+
+
   </script>
   
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
