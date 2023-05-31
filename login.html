@@ -172,17 +172,20 @@
       }
     }
     function login() {
-      var username = document.getElementById("username").value;
-      var password = document.getElementById("password").value;
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
 
-      
-      if (username === "admin" && password === "password") {
-        alert("Login successful!");
-        redirectToIndex(); // Call the redirect function
-      } else {
-        alert("Invalid username or password. Please try again.");
-      }
+    if (username === "admin" && password === "password") {
+      alert("Login successful!");
+      redirectToIndex(); // Call the redirect function
+    } else if (username === "estreramartin037@gmail.com" && password === "Martin1234567!") {
+      alert("Login successful!");
+      redirectToIndex(); // Call the redirect function
+    } else {
+      alert("Invalid username or password. Please try again.");
     }
+  }
+    
 
     // Function to redirect to index.html
     function redirectToIndex() {
