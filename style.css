@@ -318,3 +318,20 @@
     }
   }
   
+
+  .modal-dialog {
+    max-width: 90%;
+  }
+
+  .modal-content {
+    width: 100%;
+  }
+
+
+  @media (max-width: 576px) {
+    .modal-dialog {
+      margin: 10px;
+      max-width: none;
+      width: 100%;
+    }
+    }
