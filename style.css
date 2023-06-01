@@ -335,3 +335,57 @@
       width: 100%;
     }
     }
+   @media (min-width: 577px) and (max-width: 768px) {
+      .modal-dialog {
+        max-width: 80%;
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 992px) {
+      .modal-dialog {
+        max-width: 70%;
+      }
+    }
+
+    @media (min-width: 993px) and (max-width: 1200px) {
+      .modal-dialog {
+        max-width: 60%;
+      }
+    }
+
+    @media (min-width: 1201px) {
+      .modal-dialog {
+        max-width: 50%;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .modal-body {
+        padding: 10px;
+      }
+    }
+    
+    @media (min-width: 577px) and (max-width: 768px) {
+      .modal-body {
+        padding: 20px;
+      }
+    }
+    
+    @media (min-width: 769px) and (max-width: 992px) {
+      .modal-body {
+        padding: 30px;
+      }
+    }
+    
+    @media (min-width: 993px) and (max-width: 1200px) {
+      .modal-body {
+        padding: 40px;
+      }
+    }
+    
+    @media (min-width: 1201px) {
+      .modal-body {
+        padding: 50px;
+      }
+    }
+    
