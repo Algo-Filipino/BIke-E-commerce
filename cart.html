@@ -109,17 +109,17 @@
                 Quantity: <input type="number" value="${item.quantity}" min="1" onchange="updateQuantity('${item.id}', this.value)">
               </div>
               <p class="cart-item-price">₱${getItemPrice(item.id)}</p>
-             return <p>Price in ₱: ₱<span id="itemTotal_${item.id}">${(getItemPrice(item.id) * item.quantity).toFixed(2)}</span></p>
+              <p>Price in ₱: ₱<span id="itemTotal_${item.id}">${(getItemPrice(item.id) * item.quantity).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span></p>
             </div>
           `;
           cartItemsContainer.appendChild(cartItem);
         });
 
-        // Update the cart total
-        const total = calculateCartTotal();
-        cartTotal.textContent = total.toFixed(2);
-      }
-    }
+    // Update the cart total
+    const total = calculateCartTotal();
+    cartTotal.textContent = total.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+}
 
     // Function to update the quantity of a cart item
     function updateQuantity(productId, quantity) {
