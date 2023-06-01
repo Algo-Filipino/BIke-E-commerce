@@ -62,7 +62,7 @@
 
   <!-- Cart content -->
     <div class="container">
-      <h3>Categories</h3> 
+      <h1>Cart</h1> 
       <div class="cart-items">
         <!-- JavaScript code will dynamically populate the cart items here -->
       </div>
@@ -153,24 +153,20 @@
 
     // Function to remove an item from the cart
     function removeFromCart(productId) {
-  // Find the index of the item to remove
-  const itemIndex = cartItems.findIndex(item => item.id === productId);
+      // Find the index of the item to remove
+      const itemIndex = cartItems.findIndex(item => item.id === productId);
 
-  if (itemIndex !== -1) {
-    // Remove the item from the cartItems array
-    cartItems.splice(itemIndex, 1);
+      if (itemIndex !== -1) {
+        // Remove the item from the cartItems array
+        cartItems.splice(itemIndex, 1);
 
-    // Store the updated cart items in local storage
-    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        // Store the updated cart items in local storage
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
 
-    // Render the updated cart items
-    renderCartItems();
-
-    // Show an alert to notify the user
-    alert('Item(s) will be removed from order.');
-  }
-}
-
+        // Render the updated cart items
+        renderCartItems();
+      }
+    }
 
     // Function to get the image URL for a product
     function getImageUrl(productId) {
@@ -541,7 +537,6 @@
       // Store the updated cart items (empty) in local storage
       localStorage.setItem('cartItems', JSON.stringify(cartItems));
 
-      window.location.href = 'payment.html';
       // Render the updated cart items (empty)
       renderCartItems();
     }
