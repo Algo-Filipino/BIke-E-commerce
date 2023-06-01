@@ -67,6 +67,8 @@
     </div>
   </header>
        
+
+  
         
     <!-- Navigation content -->
  <!-- Main content -->
@@ -225,11 +227,20 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="cartModalLabel">Cart</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="closeButton"></button>
       </div>
       <div class="modal-body">
         <div id="cartContent">
-          <p id="emptyCartMessage" class="text-center">Your cart is empty.</p>
+          <div class="cart-total">
+            Total: ₱<span id="cartTotal">0.00</span>
+          </div>
+            
+           
+        </div>
+        <div class="modal-footer">
+
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close" id="conshop">Continue Shopping</button>
+
         </div>
       </div>
     </div>
@@ -294,6 +305,15 @@
   
     // Call the function to update the cart badge when the page loads
     updateCartBadge();
+  </script>
+  <script>
+    document.getElementById('closeButton').addEventListener('click', function() {
+      location.reload(); // Reload the page
+    });
+  
+    document.getElementById('conshop').addEventListener('click', function() {
+      location.reload(); // Reload the page
+    });
   </script>
    <script>
     var cartModal = document.getElementById('cartModal');

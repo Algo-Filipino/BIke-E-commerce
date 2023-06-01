@@ -1,51 +1,468 @@
-function addToCart(productId, title, price) {
-  // Retrieve the cart items from local storage (if any)
-  const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+// Retrieve stored cart items from local storage, or initialize an empty array
+let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 
-  // Create a new cart item object
-  const newItem = {
-    productId,
-    title,
-    price
-  };
+// Function to render the cart items
+function renderCartItems() {
+  const cartItemsContainer = document.querySelector('.cart-items');
+  const cartTotal = document.getElementById('cartTotal');
 
-  // Add the new item to the cart
-  cartItems.push(newItem);
-
-  // Update the cart items in local storage
-  localStorage.setItem('cartItems', JSON.stringify(cartItems));
-
-  // Update the cart modal with the latest items
-  updateCartModal();
-}
-
-function updateCartModal() {
-  // Retrieve the cart items from local storage
-  const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-
-  // Get the cart items container element
-  const cartItemsContainer = document.getElementById('cartItems');
-
-  // Clear the container
+  // Clear the existing cart items
   cartItemsContainer.innerHTML = '';
 
-  // Iterate over the cart items and create HTML elements to display them
-  cartItems.forEach((item, index) => {
-    const cartItemElement = document.createElement('div');
-    cartItemElement.classList.add('cart-item');
+  if (cartItems.length === 0) {
+    // Cart is empty, display a message
+    cartTotal.textContent = '0.00';
+    const emptyCartMessage = document.createElement('div');
+    emptyCartMessage.classList.add('empty-cart-message');
+    emptyCartMessage.textContent = 'Your cart is empty';
+    cartItemsContainer.appendChild(emptyCartMessage);
+  } else {
+    // Render each cart item
+    cartItems.forEach(item => {
+      const cartItem = document.createElement('div');
+      cartItem.classList.add('cart-item');
+      cartItem.innerHTML = `
+        <div class="cart-item-action">
+          <button class="btn btn-danger" onclick="removeFromCart('${item.id}')">Remove</button>
+        </div>
+        <img src="${getImageUrl(item.id)}" alt="Product Image" class="cart-item-image">
+        <div class="cart-item-details">
+          <h5 class="cart-item-title" style="font-weight: bold; ">${getItemTitle(item.id)}</h5>
+          <div>
+            Quantity: <input type="number" value="${item.quantity}" min="1" onchange="updateQuantity('${item.id}', this.value)">
+          </div>
+          <p class="cart-item-price">₱${getItemPrice(item.id)}</p>
+          <p>Price in ₱: ₱<span id="itemTotal_${item.id}">${(getItemPrice(item.id) * item.quantity).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span></p>
+        </div>
+      `;
+      cartItemsContainer.appendChild(cartItem);
+    });
 
-    const titleElement = document.createElement('h4');
-    titleElement.textContent = item.title;
-
-    const priceElement = document.createElement('span');
-    priceElement.textContent = 'Price: ₱' + item.price.toFixed(2);
-
-    cartItemElement.appendChild(titleElement);
-    cartItemElement.appendChild(priceElement);
-
-    cartItemsContainer.appendChild(cartItemElement);
-  });
+    // Update the cart total
+   const total = calculateCartTotal();
+cartTotal.textContent = total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
 }
 
-// Call the updateCartModal function when the page loads to display any existing cart items
-window.addEventListener('load', updateCartModal);
+// Function to update the quantity of a cart item
+function updateQuantity(productId, quantity) {
+  // Find the cart item corresponding to the product ID
+  const cartItem = cartItems.find(item => item.id === productId);
+
+  if (cartItem) {
+    // Update the quantity of the cart item
+    cartItem.quantity = parseInt(quantity);
+
+    // Store the updated cart items in local storage
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+    // Render the updated cart items
+    renderCartItems();
+  }
+}
+
+// Function to update the cart total
+function calculateCartTotal() {
+  let total = 0;
+
+  cartItems.forEach(item => {
+    const price = getItemPrice(item.id);
+    total += price * item.quantity;
+  });
+
+  return total;
+}
+
+// Function to remove an item from the cart
+function removeFromCart(productId) {
+  // Find the index of the item to remove
+  const itemIndex = cartItems.findIndex(item => item.id === productId);
+
+  if (itemIndex !== -1) {
+    // Remove the item from the cartItems array
+    cartItems.splice(itemIndex, 1);
+
+    // Store the updated cart items in local storage
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+    // Render the updated cart items
+    renderCartItems();
+  }
+}
+
+// Function to get the image URL for a product
+function getImageUrl(productId) {
+  // Replace this with your own logic to retrieve the image URL for a product based on its ID
+  // For example, you can use an object or database to map product IDs to image URLs
+  if (productId === 'rb1') {
+    return 'images/rb-PARIS-RIVAL-B102-ORANGE.jpg';
+  } else if (productId === 'mtb2') {
+    return 'images/mtb-CERVELO-ZHT-5-GX-AXS-MOSS-KHAKI-1.jpg';
+  } else if (productId === 'gravel1') {
+    return 'images/gravel-YQB51IZD.jpg';
+  }
+  else if (productId === 'gravel2') {
+    return 'images/gravel-00EVTV170CGRX--BLKLGSTDHN.jpg';
+  } else if (productId === 'triath1') {
+    return 'images/triath-P3_red_R8000-1.jpg';
+  } else if (productId === 'accessories-pump1') {
+    return 'images/air-pump-PUMPS_MAMMOTH_2STAGE_BLK.jpg';
+  } else if (productId === 'ebike1') {
+    return 'images/e-bike-sct_silnce10_m_b_0-_1.jpg';
+  } else if (productId === 'pedal1') {
+    return 'images/pedal-TIME-XPRO-XPRESSO-FREE-CLEAT.jpg';
+  } else if (productId === 'saddle1') {
+    return 'images/saddle-PR30_Black_1.jpg';
+  } else if (productId === 'chainring1') {
+    return 'images/chainring-Powertap_C1_Chainrings_1.jpg';
+  }  else if (productId === 'shifter1') {
+    return 'images/brake-ST-R9100-SET.jpg';
+  }  else if (productId === 'tire1') {
+    return 'images/tire-Mountain-King-II-Black-22_1.jpg';
+  }  else if (productId === 'mtb1') {
+    return 'images/mtb-CANNONDALE-SCALPEL-HM-ULTIMATE-TINTED-RED.jpg';
+  } else if (productId === 'mtb3') {
+    return 'images/mtb-CANNONDALE-MOTERRA-NEO-CARBON-1-ABYSS-BLUE.jpg';
+  } else if (productId === 'mtb4') {
+    return 'images/mtb-CANNONDALE-MOTERRA-NEO-CARBON-2-MANTIS.jpg';
+  } else if (productId === 'mtb5') {
+    return 'images/mtb-CANNONDALE-HABIT-CARBON-1-JADE.jpg';
+  }  else if (productId === 'mtb6') {
+    return '"images/mtb-CANNONDALE-HABIT-LT-2-LAGUNA-YELLOW.jpg';
+  }  else if (productId === 'mtb7') {
+    return 'images/mtb-00P9CV129AZEE--BLUMDSTDFN.jpg';
+  }  else if (productId === 'mtb8') {
+    return 'images/mtb-0055CV127ASXA--BBBMDDRPPN.jpg';
+  }  else if (productId === 'mtb9') {
+    return 'images/mtb-TRAIL-429-PRO-XTXTR-ENDURO-BLUE.jpg';
+  }  else if (productId === 'mtb10') {
+    return 'images/mtb-CERVELO-ZHT-5-XX1-AXS-FIVE-BLACK-1.jpg';
+  } else if (productId === 'mtb11') {
+    return 'images/mtb-280534.jpg';
+  } else if (productId === 'mtb12') {
+    return 'images/mtb-0055CV127ASXA--BBBMDDRPPN.jpg';
+  } else if (productId === 'rb2') {
+    return 'images/rb-3T-STRADA-ICR-RIVAL-AXS-2X-RED-BLACK.jpg';
+  } else if (productId === 'rb3') {
+    return 'images/rb-3T-STRADA-ICR-FORCE-CHROME.jpg';
+  } else if (productId === 'rb4') {
+    return 'images/rb-3T-STRADA-ICR-RED-AXS-1X-NAVY-BLACK.jpg';
+  } else if (productId === 'rb5') {
+    return 'images/rb-Colnago_Arabesque_RADK.jpg';
+  } else if (productId === 'rb6') {
+    return 'images/rb-Colnago-E64-BMGR_1.jpg';
+  } else if (productId === 'rb7') {
+    return 'images/rb-COLNAGO-V3-MKRD.jpg';
+  } else if (productId === 'rb8') {
+    return 'images/rb-COLNAGO-C68-TI-KAIZEN-PRO-BLACK.jpg';
+  }  else if (productId === 'triath2') {
+    return 'images/triath-ARGON-18-117_105_Turquoise.jpg';
+  } else if (productId === 'triath3') {
+    return 'images/triath-ARGON-18-E119-TRI-DISC-RED-AXS-KAILUA-FULL-MOON_1.jpg';
+  } else if (productId === 'triath4') {
+    return 'images/triath-Pinarello_Graal_Di2_2011_Sky_Bike.jpg';
+  } else if (productId === 'triath5') {
+    return 'images/triath-Pinarello_Montello_2007.jpg';
+  } else if (productId === 'triath6') {
+    return 'images/triath-BBJCA09_IA10.jpg';
+  } else if (productId === 'ebike2') {
+    return 'images/ebike-Colnago-E64-BMGR_1.jpg';
+  } else if (productId === 'ebike3') {
+    return 'images/ebike-E-765-OPTIMUM-PROTEAM-BLACK-GLOSSY-1.jpg';
+  } else if (productId === 'ebike4') {
+    return 'images/ebike-YQBN8I55PZ.jpg';
+  } else if (productId === 'gravel2') {
+    return 'images/gravel-flt_fx_adv_grx6_b_0-whtxptn_1.jpg';
+  } else if (productId === 'gravel3') {
+    return 'images/gravel3flt_fx_advp_fc_cx1_b_0-stnqfrshtxptn_1.jpg';
+  } else if (productId === 'gravel4') {
+    return 'images/gravel4COLNAGO-G3X-G3BK.jpg';
+  } else if (productId === 'gravel5') {
+    return '';
+  } else if (productId === 'crank1') {
+    return 'images/crankRotor_Track_Crank_1.jpg';
+  } else if (productId === 'crank2') {
+    return 'images/crank2SRM_Campy_4B.jpg';
+  } else if (productId === 'crank3') {
+    return 'images/crank3SRAM_Force1_CS_1.jpg';
+  } else if (productId === 'crank4') {
+    return 'images/crank4FC-R9100-P.jpg';
+  } 
+  else if (productId === 'fork1') {
+    return "images/fork1ENVE_CX_Fork_Thru_Axle_1.jpg";
+  } else if (productId === 'fork2') {
+    return "images/fork2ENVE_GRD_Fork_1.jpg";
+  } else if (productId === 'fork3') {
+    return "images/fork3ENVE_SpeedRelease_RoadDiscFork_1.jpg";
+  } else if (productId === 'fork4') {
+    return "images/fork4Lauf_GritSL.jpg";
+  } else if (productId === 'seat1') {
+    return ;
+  } else if (productId === 'seat2') {
+    return ;
+  } else if (productId === 'seat3') {
+    return ;
+  } else if (productId === 'seat4') {
+    return ;
+  } 
+  // Add more conditions for other product IDs if needed
+
+  // Return a default image URL if the ID is not found
+  return 'default-image.jpg';
+}
+
+// Function to get the title of a product
+function getItemTitle(productId) {
+  // Replace this with your own logic to retrieve the title of a product based on its ID
+  // For example, you can use an object or database to map product IDs to titles
+  if (productId === 'rb1') {
+    return 'PINARELLO PARIS RIVAL AXS BIKE';
+  } else if (productId === 'mtb2') {
+    return 'CERVELO ZHT-5 GX EAGLE AXS BIKE';
+  } else if (productId === 'gravel1') {
+    return '>BIANCHI ZOLDER PRO BIKE';
+  }  else if (productId === 'gravel2') {
+    return 'PIVOT E-VAULT TEAM GRX DI2 BIKE';
+  } else if (productId === 'triath1') {
+    return '>CERVELO P3 ULTEGRA BIKE';
+  }  else if (productId === 'accessories-pump1') {
+    return 'BLACKBURN 2STAGE ANYVALVE AIR PUMP';
+  }  else if (productId === 'ebike1') {
+    return 'SCOTT SILENCE ERIDE 10 BIKE';
+  }  else if (productId === 'pedal1') {
+    return 'TIME XPRO/XPRESSO ICLIC CLEATS - FLOATING';
+  } else if (productId === 'saddle1') {
+    return 'ISM PR 3.0 SADDLE';
+  } else if (productId === 'chainring1') {
+    return 'POWERTAP C1 CHAINRINGS';
+  }  else if (productId === 'shifter1') {
+    return 'SHIMANO DURA-ACE ST-R9100 SHIFTER/BRAKE LEVER SET';
+  }  else if (productId === 'tire1') {
+    return 'CONTINENTAL MOUNTAIN KING II 27.5" CLINCHER TIRE';
+  } else if (productId === 'mtb1') {
+    return 'CANNONDALE SCALPEL HM ULTIMATE BIKE';
+  } else if (productId === 'mtb3') {
+    return 'CANNONDALE MOTERRA NEO CARBON 1 BIKE';
+  } else if (productId === 'mtb4') {
+    return 'CANNONDALE MOTERRA NEO CARBON 2 BIKE';
+  } else if (productId === 'mtb5') {
+    return 'CANNONDALE HABIT CARBON 1 BIKE';
+  }  else if (productId === 'mtb6') {
+    return 'CANNONDALE HABIT LT 2 BIKE';
+  }  else if (productId === 'mtb7') {
+    return 'IVOT PHOENIX 29 RIDE ZEE W/ FOX FACTORY BIKE';
+  }  else if (productId === 'mtb8') {
+    return 'PIVOT MACH 5.5 CARBON RACE XT BIKE';
+  }  else if (productId === 'mtb9') {
+    return 'PIVOT TRAIL 429 PRO XT/XTR ENDURO BIKE';
+  }  else if (productId === 'mtb10') {
+    return 'CERVELO ZHT-5 GX EAGLE AXS BIKE';
+  } else if (productId === 'mtb11') {
+    return 'CERVELO ZHT-5 XX1 AXS BIKE';
+  } else if (productId === 'mtb12') {
+    return 'SCOTT GENIUS 900 TUNED AXS BIKE';
+  } else if (productId === 'rb2') {
+    return 'images/rb-3T-STRADA-ICR-RIVAL-AXS-2X-RED-BLACK.jpg';
+  } else if (productId === 'rb3') {
+    return 'images/rb-3T-STRADA-ICR-FORCE-CHROME.jpg';
+  } else if (productId === 'rb4') {
+    return 'images/rb-3T-STRADA-ICR-RED-AXS-1X-NAVY-BLACK.jpg';
+  } else if (productId === 'rb5') {
+    return 'images/rb-Colnago_Arabesque_RADK.jpg';
+  } else if (productId === 'rb6') {
+    return 'images/rb-Colnago-E64-BMGR_1.jpg';
+  } else if (productId === 'rb7') {
+    return '>COLNAGO V3 DISC RIVAL AXS BIKE';
+  } else if (productId === 'rb8') {
+    return 'COLNAGO C68 TI DISC KAIZEN PRO BLACK BIKE';
+  }  else if (productId === 'triath2') {
+    return '>ARGON 18 E-117 TRI ULTEGRA/105 BIKE';
+  } else if (productId === 'triath3') {
+    return 'ARGON 18 E-119 TRI+ DISC RED AXS BIKE';
+  } else if (productId === 'triath4') {
+    return 'PINARELLO GRAAL DI2 FRAMESET W/ANURA BAR';
+  } else if (productId === 'triath5') {
+    return 'PINARELLO MONTELLO FP8';
+  } else if (productId === 'triath6') {
+    return 'FELT IA ADVANCED FORCE AXS BIKE';
+  } else if (productId === 'ebike2') {
+    return 'COLNAGO E-64 ULTEGRA DI2 BIKE';
+  } else if (productId === 'ebike3') {
+    return 'LOOK E-765 OPTIMUM ULTEGRA BIKEg';
+  } else if (productId === 'ebike4') {
+    return 'BIANCHI ARIA E-ROAD ULTEGRA BIKE';
+  }  else if (productId === 'gravel2') {
+    return 'FELT FX ADVANCED GRX 600 BIKE';
+  } else if (productId === 'gravel3') {
+    return 'FELT FX ADVANCED+ FORCE CX1 BIKE';
+  } else if (productId === 'gravel4') {
+    return 'COLNAGO G3-X RIVAL AXS 1X DISC BIK';
+  } else if (productId === 'gravel5') {
+    return 'BIANCHI ZOLDER PRO BIKE';
+  } else if (productId === 'crank1') {
+    return 'ROTOR 3D24 TRACK CRANK';
+  } else if (productId === 'crank2') {
+    return 'SRM CAMPAGNOLO POWERMETER CRANKSET';
+  } else if (productId === 'crank3') {
+    return 'SRAM FORCE 1 BB30 CRANKSET';
+  } else if (productId === 'crank4') {
+    return 'SHIMANO DURA-ACE FC-R9100-P POWER CRANKSET';
+  } else if (productId === 'fork1') {
+    return "ENVE CROSS DISC FORK";
+  } else if (productId === 'fork2') {
+    return "ENVE GRAVEL ROAD DISC FORK";
+  } else if (productId === 'fork3') {
+    return "ENVE ROAD DISC FORK WITH SPEED RELEASE";
+  } else if (productId === 'fork4') {
+    return "LAUF GRIT SL SUSPENSION FORK";
+  } else if (productId === 'seat1') {
+    return 'ENVE SEATPOST - TWIN BOLT';
+  } else if (productId === 'seat2') {
+    return '3T IONIC 0 LTD STEALTH SEATPOST';
+  } else if (productId === 'seat3') {
+    return 'CAMPAGNOLO RECORD CARBSEATPOST ';
+  } else if (productId === 'seat4') {
+    return '>CERVELO SP27 CARBON SEATPOST';
+  } 
+
+
+  // Return a default title if the ID is not found
+  return 'Unknown Product';
+}
+
+// Function to get the price of a product
+function getItemPrice(productId) {
+
+  if (productId === 'rb1') {
+    return 262750.00;
+  } else if (productId === 'mtb2') {
+    return 244800.00;
+  } else if (productId === 'gravel1') {
+    return 193800.00;
+  } else if (productId === 'gravel2') {
+    return 382499.00;
+  } else if (productId === 'triath1') {
+    return 183549.00;
+  }  else if (productId === 'accessories-pump1') {
+    return 1785.00;
+  } else if (productId === 'ebike1') {
+    return 178500.00;
+  } else if (productId === 'pedal1') {
+    return 1173.00;
+  } else if (productId === 'saddle1') {
+    return 1173.00;
+  } else if (productId === 'chainring1') {
+    return 20349.00;
+  } else if (productId === 'shifter1') {
+    return 28049.99;
+  }  else if (productId === 'mtb1') {
+    return 612000.00;
+  }  else if (productId === 'mtb3') {
+    return 43860.00;
+  }  else if (productId === 'mtb4') {
+    return 382500.00;
+  }  else if (productId === 'mtb5') {
+    return 283050.00;
+  }  else if (productId === 'mtb6') {
+    return 184926.00;
+  }  else if (productId === 'mtb7') {
+    return 387549.00;
+  }  else if (productId === 'mtb8') {
+    return 294950.00;
+  }  else if (productId === 'mtb9') {
+    return 392649.00;
+  }  else if (productId === 'mtb10') {
+    return 450000.00;
+  }  else if (productId === 'mtb11') {
+    return 175000.00;
+  }  else if (productId === 'mtb12') {
+    return 370000.00;
+  } else if (productId === 'rb2') {
+    return 274,950.00;
+  } else if (productId === 'rb3') {
+    return 309950.00;
+  } else if (productId === 'rb4') {
+    return 382449.00 ;
+  } else if (productId === 'rb5') {
+    return 196497.50;
+  } else if (productId === 'rb6') {
+    return 407997.45;
+  } else if (productId === 'rb7') {
+    return 244997.55;
+  } else if (productId === 'rb8') {
+    return 1170450 ;
+  }  else if (productId === 'triath2') {
+    return 127499.49;
+  } else if (productId === 'triath3') {
+    return 663000.00;
+  } else if (productId === 'triath4') {
+    return 239700.00;
+  } else if (productId === 'triath5') {
+    return 168045.00;
+  } else if (productId === 'triath6') {
+    return 394,401.00;
+  } else if (productId === 'ebike2') {
+    return 391997.95;
+  } else if (productId === 'ebike3') {
+    return 382500.00;
+  } else if (productId === 'ebike4') {
+    return 234600.00;
+  }  else if (productId === 'gravel2') {
+    return 163149.00;
+  } else if (productId === 'gravel3') {
+    return 230251.00;
+  } else if (productId === 'gravel4') {
+    return 247347.45;
+  } else if (productId === 'gravel5') {
+    return 38207.00;
+  } else if (productId === 'crank1') {
+    return 38207.00;
+  } else if (productId === 'crank2') {
+    return 98000;
+  } else if (productId === 'crank3') {
+    return 32000.00;
+  } else if (productId === 'crank4') {
+    return 71145.00;
+  } else if (productId === 'fork1') {
+    return 27,100.00;
+  } else if (productId === 'fork2') {
+    return 38250.00;
+  } else if (productId === 'fork3') {
+    return 29351.00;
+  } else if (productId === 'fork4') {
+    return 50490.00;
+  } else if (productId === 'seat1') {
+    return ;
+  } else if (productId === 'seat2') {
+    return ;
+  } else if (productId === 'seat3') {
+    return ;
+  } else if (productId === 'seat4') {
+    return ;
+  } 
+  //
+  
+
+  // Return a default price if the ID is not found
+  return 0.00;
+}
+
+// Function to handle the checkout button click
+function checkout() {
+  // Clear the cart items array
+  cartItems = [];
+  const checkoutButton = document.getElementById('checkoutButton');
+  checkoutButton.disabled = true;
+
+  // Show a success message
+  alert('Checkout completed!');
+  // Store the updated cart items (empty) in local storage
+  localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+  // Render the updated cart items (empty)
+  renderCartItems();
+}
+
+
+// Initial rendering of the cart items
+renderCartItems();

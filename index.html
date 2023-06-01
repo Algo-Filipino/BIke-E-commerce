@@ -14,6 +14,7 @@
 		<script src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="path/to/bootstrap.min.css">
 <script src="path/to/bootstrap.bundle.min.js"></script>
+<script></script>
   
 
 
@@ -508,37 +509,33 @@
     </div>
   </section>
   
-  
-  
-  
-  
-  
-  
     
-    <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="cartModalLabel">Cart</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div id="cartContent">
-              <p id="emptyCartMessage" class="text-center">Your cart is empty.</p>
+  <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="cartModalLabel">Cart</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="closeButton"></button>
+        </div>
+        <div class="modal-body">
+          <div id="cartContent">
+            <div class="cart-total">
+              Total: ₱<span id="cartTotal">0.00</span>
             </div>
+              
+             
+          </div>
+          <div class="modal-footer">
+
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close" id="conshop">Continue Shopping</button>
+
           </div>
         </div>
       </div>
     </div>
-  </div> 
+  </div>
   
   
-    
-
-
-   
-
-  <!-- Footer -->
 <!-- Footer -->
 <footer class="footer">
   <div class="container">
@@ -579,8 +576,15 @@
 </footer>
 
 
-  
- <!-- Font Awesome JavaScript -->
+<script>
+  document.getElementById('closeButton').addEventListener('click', function() {
+    location.reload(); // Reload the page
+  });
+
+  document.getElementById('conshop').addEventListener('click', function() {
+    location.reload(); // Reload the page
+  });
+</script>
  <script>
   // Retrieve stored cart items from local storage, or initialize an empty array
   let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];

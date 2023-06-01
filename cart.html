@@ -71,9 +71,10 @@
       </div>
       <div>
         <button id="checkoutButton" class="btn btn-primary" onclick="checkout()">Checkout</button>
+                 
       </div>
     </div>
-  <script src="script"></script>
+
   <script>
     // Retrieve stored cart items from local storage, or initialize an empty array
     let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
@@ -104,22 +105,22 @@
             </div>
             <img src="${getImageUrl(item.id)}" alt="Product Image" class="cart-item-image">
             <div class="cart-item-details">
-              <h5 class="cart-item-title">${getItemTitle(item.id)}</h5>
+              <h5 class="cart-item-title" style="font-weight: bold;">${getItemTitle(item.id)}</h5>
               <div>
                 Quantity: <input type="number" value="${item.quantity}" min="1" onchange="updateQuantity('${item.id}', this.value)">
               </div>
               <p class="cart-item-price">₱${getItemPrice(item.id)}</p>
-              <p>Price in ₱: ₱<span id="itemTotal_${item.id}">${(getItemPrice(item.id) * item.quantity).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span></p>
+              <p>Price in ₱: ₱<span id="itemTotal_${item.id}">${(getItemPrice(item.id) * item.quantity).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span></p>
             </div>
           `;
           cartItemsContainer.appendChild(cartItem);
         });
 
-    // Update the cart total
-    const total = calculateCartTotal();
-    cartTotal.textContent = total.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  }
-}
+        // Update the cart total
+       const total = calculateCartTotal();
+    cartTotal.textContent = total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      }
+    }
 
     // Function to update the quantity of a cart item
     function updateQuantity(productId, quantity) {
@@ -509,13 +510,13 @@
       } else if (productId === 'fork4') {
         return 50490.00;
       } else if (productId === 'seat1') {
-        return ;
+        return 14700.00;
       } else if (productId === 'seat2') {
-        return ;
+        return 15044.49;
       } else if (productId === 'seat3') {
-        return ;
+        return 9945;
       } else if (productId === 'seat4') {
-        return ;
+        return 12750;
       } 
       //
       
@@ -540,6 +541,7 @@
       renderCartItems();
     }
 
+    
     // Initial rendering of the cart items
     renderCartItems();
 
